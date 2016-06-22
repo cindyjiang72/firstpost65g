@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  InstrumentationViewController.swift
 //  TabbedApplication
 //
 //  Created by JiangYuan on 6/20/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class InstrumentationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

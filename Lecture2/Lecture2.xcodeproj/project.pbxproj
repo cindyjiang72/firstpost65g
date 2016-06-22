@@ -7,27 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D6CF1DC21D18C67900DC6555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF1DC11D18C67900DC6555 /* AppDelegate.swift */; };
-		D6CF1DC41D18C67900DC6555 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF1DC31D18C67900DC6555 /* SimulationViewController.swift */; };
-		D6CF1DC61D18C67900DC6555 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF1DC51D18C67900DC6555 /* InstrumentationViewController.swift */; };
-		D6CF1DC91D18C67900DC6555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CF1DC71D18C67900DC6555 /* Main.storyboard */; };
-		D6CF1DCB1D18C67900DC6555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6CF1DCA1D18C67900DC6555 /* Assets.xcassets */; };
-		D6CF1DCE1D18C67900DC6555 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CF1DCC1D18C67900DC6555 /* LaunchScreen.storyboard */; };
+		D6CF1DE21D1B1D6500DC6555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF1DE11D1B1D6500DC6555 /* AppDelegate.swift */; };
+		D6CF1DE41D1B1D6500DC6555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CF1DE31D1B1D6500DC6555 /* ViewController.swift */; };
+		D6CF1DE71D1B1D6500DC6555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CF1DE51D1B1D6500DC6555 /* Main.storyboard */; };
+		D6CF1DE91D1B1D6500DC6555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6CF1DE81D1B1D6500DC6555 /* Assets.xcassets */; };
+		D6CF1DEC1D1B1D6500DC6555 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6CF1DEA1D1B1D6500DC6555 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D6CF1DBE1D18C67900DC6555 /* TabbedApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabbedApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6CF1DC11D18C67900DC6555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D6CF1DC31D18C67900DC6555 /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
-		D6CF1DC51D18C67900DC6555 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
-		D6CF1DC81D18C67900DC6555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D6CF1DCA1D18C67900DC6555 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D6CF1DCD1D18C67900DC6555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D6CF1DCF1D18C67900DC6555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6CF1DDE1D1B1D6500DC6555 /* Lecture2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lecture2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6CF1DE11D1B1D6500DC6555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D6CF1DE31D1B1D6500DC6555 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D6CF1DE61D1B1D6500DC6555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D6CF1DE81D1B1D6500DC6555 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D6CF1DEB1D1B1D6500DC6555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D6CF1DED1D1B1D6500DC6555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D6CF1DBB1D18C67900DC6555 /* Frameworks */ = {
+		D6CF1DDB1D1B1D6500DC6555 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,72 +35,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D6CF1DB51D18C67900DC6555 = {
+		D6CF1DD51D1B1D6500DC6555 = {
 			isa = PBXGroup;
 			children = (
-				D6CF1DC01D18C67900DC6555 /* TabbedApplication */,
-				D6CF1DBF1D18C67900DC6555 /* Products */,
+				D6CF1DE01D1B1D6500DC6555 /* Lecture2 */,
+				D6CF1DDF1D1B1D6500DC6555 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D6CF1DBF1D18C67900DC6555 /* Products */ = {
+		D6CF1DDF1D1B1D6500DC6555 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6CF1DBE1D18C67900DC6555 /* TabbedApplication.app */,
+				D6CF1DDE1D1B1D6500DC6555 /* Lecture2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D6CF1DC01D18C67900DC6555 /* TabbedApplication */ = {
+		D6CF1DE01D1B1D6500DC6555 /* Lecture2 */ = {
 			isa = PBXGroup;
 			children = (
-				D6CF1DC11D18C67900DC6555 /* AppDelegate.swift */,
-				D6CF1DC31D18C67900DC6555 /* SimulationViewController.swift */,
-				D6CF1DC51D18C67900DC6555 /* InstrumentationViewController.swift */,
-				D6CF1DC71D18C67900DC6555 /* Main.storyboard */,
-				D6CF1DCA1D18C67900DC6555 /* Assets.xcassets */,
-				D6CF1DCC1D18C67900DC6555 /* LaunchScreen.storyboard */,
-				D6CF1DCF1D18C67900DC6555 /* Info.plist */,
+				D6CF1DE11D1B1D6500DC6555 /* AppDelegate.swift */,
+				D6CF1DE31D1B1D6500DC6555 /* ViewController.swift */,
+				D6CF1DE51D1B1D6500DC6555 /* Main.storyboard */,
+				D6CF1DE81D1B1D6500DC6555 /* Assets.xcassets */,
+				D6CF1DEA1D1B1D6500DC6555 /* LaunchScreen.storyboard */,
+				D6CF1DED1D1B1D6500DC6555 /* Info.plist */,
 			);
-			path = TabbedApplication;
+			path = Lecture2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D6CF1DBD1D18C67900DC6555 /* TabbedApplication */ = {
+		D6CF1DDD1D1B1D6500DC6555 /* Lecture2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6CF1DD21D18C67900DC6555 /* Build configuration list for PBXNativeTarget "TabbedApplication" */;
+			buildConfigurationList = D6CF1DF01D1B1D6500DC6555 /* Build configuration list for PBXNativeTarget "Lecture2" */;
 			buildPhases = (
-				D6CF1DBA1D18C67900DC6555 /* Sources */,
-				D6CF1DBB1D18C67900DC6555 /* Frameworks */,
-				D6CF1DBC1D18C67900DC6555 /* Resources */,
+				D6CF1DDA1D1B1D6500DC6555 /* Sources */,
+				D6CF1DDB1D1B1D6500DC6555 /* Frameworks */,
+				D6CF1DDC1D1B1D6500DC6555 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TabbedApplication;
-			productName = TabbedApplication;
-			productReference = D6CF1DBE1D18C67900DC6555 /* TabbedApplication.app */;
+			name = Lecture2;
+			productName = Lecture2;
+			productReference = D6CF1DDE1D1B1D6500DC6555 /* Lecture2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D6CF1DB61D18C67900DC6555 /* Project object */ = {
+		D6CF1DD61D1B1D6500DC6555 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = JiangYuan;
 				TargetAttributes = {
-					D6CF1DBD1D18C67900DC6555 = {
+					D6CF1DDD1D1B1D6500DC6555 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
 			};
-			buildConfigurationList = D6CF1DB91D18C67900DC6555 /* Build configuration list for PBXProject "TabbedApplication" */;
+			buildConfigurationList = D6CF1DD91D1B1D6500DC6555 /* Build configuration list for PBXProject "Lecture2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -110,55 +107,54 @@
 				en,
 				Base,
 			);
-			mainGroup = D6CF1DB51D18C67900DC6555;
-			productRefGroup = D6CF1DBF1D18C67900DC6555 /* Products */;
+			mainGroup = D6CF1DD51D1B1D6500DC6555;
+			productRefGroup = D6CF1DDF1D1B1D6500DC6555 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D6CF1DBD1D18C67900DC6555 /* TabbedApplication */,
+				D6CF1DDD1D1B1D6500DC6555 /* Lecture2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D6CF1DBC1D18C67900DC6555 /* Resources */ = {
+		D6CF1DDC1D1B1D6500DC6555 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6CF1DCE1D18C67900DC6555 /* LaunchScreen.storyboard in Resources */,
-				D6CF1DCB1D18C67900DC6555 /* Assets.xcassets in Resources */,
-				D6CF1DC91D18C67900DC6555 /* Main.storyboard in Resources */,
+				D6CF1DEC1D1B1D6500DC6555 /* LaunchScreen.storyboard in Resources */,
+				D6CF1DE91D1B1D6500DC6555 /* Assets.xcassets in Resources */,
+				D6CF1DE71D1B1D6500DC6555 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D6CF1DBA1D18C67900DC6555 /* Sources */ = {
+		D6CF1DDA1D1B1D6500DC6555 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6CF1DC61D18C67900DC6555 /* InstrumentationViewController.swift in Sources */,
-				D6CF1DC21D18C67900DC6555 /* AppDelegate.swift in Sources */,
-				D6CF1DC41D18C67900DC6555 /* SimulationViewController.swift in Sources */,
+				D6CF1DE41D1B1D6500DC6555 /* ViewController.swift in Sources */,
+				D6CF1DE21D1B1D6500DC6555 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D6CF1DC71D18C67900DC6555 /* Main.storyboard */ = {
+		D6CF1DE51D1B1D6500DC6555 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D6CF1DC81D18C67900DC6555 /* Base */,
+				D6CF1DE61D1B1D6500DC6555 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		D6CF1DCC1D18C67900DC6555 /* LaunchScreen.storyboard */ = {
+		D6CF1DEA1D1B1D6500DC6555 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D6CF1DCD1D18C67900DC6555 /* Base */,
+				D6CF1DEB1D1B1D6500DC6555 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +162,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		D6CF1DD01D18C67900DC6555 /* Debug */ = {
+		D6CF1DEE1D1B1D6500DC6555 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -212,7 +208,7 @@
 			};
 			name = Debug;
 		};
-		D6CF1DD11D18C67900DC6555 /* Release */ = {
+		D6CF1DEF1D1B1D6500DC6555 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -251,24 +247,24 @@
 			};
 			name = Release;
 		};
-		D6CF1DD31D18C67900DC6555 /* Debug */ = {
+		D6CF1DF11D1B1D6500DC6555 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = TabbedApplication/Info.plist;
+				INFOPLIST_FILE = Lecture2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JY.TabbedApplication;
+				PRODUCT_BUNDLE_IDENTIFIER = JY.Lecture2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		D6CF1DD41D18C67900DC6555 /* Release */ = {
+		D6CF1DF21D1B1D6500DC6555 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = TabbedApplication/Info.plist;
+				INFOPLIST_FILE = Lecture2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = JY.TabbedApplication;
+				PRODUCT_BUNDLE_IDENTIFIER = JY.Lecture2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -276,24 +272,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D6CF1DB91D18C67900DC6555 /* Build configuration list for PBXProject "TabbedApplication" */ = {
+		D6CF1DD91D1B1D6500DC6555 /* Build configuration list for PBXProject "Lecture2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6CF1DD01D18C67900DC6555 /* Debug */,
-				D6CF1DD11D18C67900DC6555 /* Release */,
+				D6CF1DEE1D1B1D6500DC6555 /* Debug */,
+				D6CF1DEF1D1B1D6500DC6555 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6CF1DD21D18C67900DC6555 /* Build configuration list for PBXNativeTarget "TabbedApplication" */ = {
+		D6CF1DF01D1B1D6500DC6555 /* Build configuration list for PBXNativeTarget "Lecture2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D6CF1DD31D18C67900DC6555 /* Debug */,
-				D6CF1DD41D18C67900DC6555 /* Release */,
+				D6CF1DF11D1B1D6500DC6555 /* Debug */,
+				D6CF1DF21D1B1D6500DC6555 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D6CF1DB61D18C67900DC6555 /* Project object */;
+	rootObject = D6CF1DD61D1B1D6500DC6555 /* Project object */;
 }

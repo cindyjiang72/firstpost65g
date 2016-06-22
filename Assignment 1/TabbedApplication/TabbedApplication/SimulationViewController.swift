@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  SimulationViewController.swift
 //  TabbedApplication
 //
 //  Created by JiangYuan on 6/20/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SimulationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
