@@ -4,12 +4,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Simulation-->
+        <!--SimulationViewController-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="TabbedApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="SimulationViewController" customClass="FirstViewController" customModule="TabbedApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -18,31 +20,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIt-w5-eN1">
-                                <rect key="frame" x="236" y="236" width="128" height="128"/>
-                                <color key="backgroundColor" red="0.01795187289786726" green="0.97312288016082937" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xf7-gM-ARW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIt-w5-eN1" userLabel="LifeGrid">
+                                        <rect key="frame" x="80" y="56" width="440" height="440"/>
+                                        <color key="backgroundColor" red="0.12217444453122672" green="0.93475602584983453" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rIt-w5-eN1" secondAttribute="height" multiplier="1:1" id="P5c-rA-UOb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="rIt-w5-eN1" secondAttribute="height" multiplier="1:1" id="P5c-rA-UOb"/>
+                                    <constraint firstItem="rIt-w5-eN1" firstAttribute="centerX" secondItem="Xf7-gM-ARW" secondAttribute="centerX" id="0J3-1B-K0X"/>
+                                    <constraint firstItem="rIt-w5-eN1" firstAttribute="height" relation="lessThanOrEqual" secondItem="Xf7-gM-ARW" secondAttribute="height" multiplier="8:10" id="N70-OB-tXt"/>
+                                    <constraint firstItem="rIt-w5-eN1" firstAttribute="centerY" secondItem="Xf7-gM-ARW" secondAttribute="centerY" id="RKI-Uj-Gyy"/>
+                                    <constraint firstItem="rIt-w5-eN1" firstAttribute="height" secondItem="Xf7-gM-ARW" secondAttribute="height" multiplier="8:10" priority="750" id="V0f-LS-hCt"/>
+                                    <constraint firstItem="rIt-w5-eN1" firstAttribute="width" relation="lessThanOrEqual" secondItem="Xf7-gM-ARW" secondAttribute="width" multiplier="8:10" id="vVQ-b2-kvP"/>
+                                    <constraint firstItem="rIt-w5-eN1" firstAttribute="width" secondItem="Xf7-gM-ARW" secondAttribute="width" multiplier="8:10" priority="750" id="xJd-FS-bxk"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rIt-w5-eN1" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="20U-ak-Ov7"/>
-                            <constraint firstItem="rIt-w5-eN1" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="RuU-Qv-Bt0"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="rIt-w5-eN1" secondAttribute="bottom" constant="187" id="h6a-ht-QyC"/>
+                            <constraint firstItem="Xf7-gM-ARW" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="7vq-jm-qWa"/>
+                            <constraint firstItem="Xf7-gM-ARW" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" id="9VY-53-T0B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xf7-gM-ARW" secondAttribute="trailing" constant="-20" id="CWo-Dw-3ON"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Xf7-gM-ARW" secondAttribute="bottom" id="z4h-xz-fxr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simulation" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--Second-->
+        <!--InstrumentationViewController-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="TabbedApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="InstrumentationViewController" customClass="SecondViewController" customModule="TabbedApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -50,28 +67,7 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="210" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="216" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                 </viewController>
