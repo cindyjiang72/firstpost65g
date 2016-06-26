@@ -25,7 +25,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rIt-w5-eN1" userLabel="LifeGrid">
                                         <rect key="frame" x="80" y="56" width="440" height="440"/>
-                                        <color key="backgroundColor" red="0.12217444453122672" green="0.93475602584983453" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.60275512932700037" green="1" blue="0.99109484808400738" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rIt-w5-eN1" secondAttribute="height" multiplier="1:1" id="P5c-rA-UOb"/>
                                         </constraints>
@@ -67,7 +67,103 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eo9-PF-MV5" userLabel="LightGreenView">
+                                <rect key="frame" x="20" y="286" width="560" height="265"/>
+                                <color key="backgroundColor" red="0.65059958376775207" green="1" blue="0.76185074197965719" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wN-ra-Crc" userLabel="LightBlueView">
+                                <rect key="frame" x="20" y="20" width="560" height="266"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fp9-av-L0y" userLabel="Grid Size">
+                                        <rect key="frame" x="213" y="98" width="118" height="31"/>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="flZ-CI-mPy" userLabel="Frame/second">
+                                        <rect key="frame" x="213" y="146" width="118" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="114" id="tp6-Ue-p4J"/>
+                                        </constraints>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6b-t1-8pg">
+                                        <rect key="frame" x="253" y="211" width="39" height="30"/>
+                                        <state key="normal" title="Reset"/>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Generation" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V65-Q3-Fh1">
+                                        <rect key="frame" x="224" y="39" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.65190806432905857" green="0.97398241355693449" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="fp9-av-L0y" firstAttribute="centerX" secondItem="6wN-ra-Crc" secondAttribute="centerX" id="2UV-hn-V3K"/>
+                                    <constraint firstItem="x6b-t1-8pg" firstAttribute="centerX" secondItem="6wN-ra-Crc" secondAttribute="centerX" id="FNm-hR-dpY"/>
+                                    <constraint firstItem="V65-Q3-Fh1" firstAttribute="centerX" secondItem="6wN-ra-Crc" secondAttribute="centerX" id="auW-YS-eWD"/>
+                                    <constraint firstItem="flZ-CI-mPy" firstAttribute="centerX" secondItem="6wN-ra-Crc" secondAttribute="centerX" id="yXo-ft-BhP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6wN-ra-Crc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="6wK-N5-grz"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="width" secondItem="6wN-ra-Crc" secondAttribute="width" id="E63-Uj-I5g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6wN-ra-Crc" secondAttribute="trailing" id="ErJ-tz-Pg0"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="eo9-PF-MV5" secondAttribute="bottom" id="GHk-fx-qgS"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="KMs-vJ-6H1"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="MLh-wu-vkV"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="Upg-sn-N0h"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="leading" secondItem="6wN-ra-Crc" secondAttribute="trailing" id="WFR-1o-fxu"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="eo9-PF-MV5" secondAttribute="bottom" id="Xbi-xE-2pk"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="height" secondItem="6wN-ra-Crc" secondAttribute="height" id="axu-GH-sTo"/>
+                            <constraint firstItem="6wN-ra-Crc" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="eZN-FO-mcq"/>
+                            <constraint firstItem="6wN-ra-Crc" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="gJR-x5-37f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eo9-PF-MV5" secondAttribute="trailing" id="j5s-Em-zxr"/>
+                            <constraint firstItem="6wN-ra-Crc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="mLZ-XI-yb3"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="6wN-ra-Crc" secondAttribute="bottom" id="oSg-F9-Jpg"/>
+                            <constraint firstItem="eo9-PF-MV5" firstAttribute="top" secondItem="6wN-ra-Crc" secondAttribute="bottom" id="scm-q7-NT3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6wK-N5-grz"/>
+                                <exclude reference="eZN-FO-mcq"/>
+                                <exclude reference="KMs-vJ-6H1"/>
+                                <exclude reference="Upg-sn-N0h"/>
+                                <exclude reference="WFR-1o-fxu"/>
+                                <exclude reference="GHk-fx-qgS"/>
+                                <exclude reference="oSg-F9-Jpg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="6wN-ra-Crc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="6wK-N5-grz"/>
+                                <exclude reference="ErJ-tz-Pg0"/>
+                                <include reference="eZN-FO-mcq"/>
+                                <exclude reference="gJR-x5-37f"/>
+                                <exclude reference="mLZ-XI-yb3"/>
+                                <include reference="KMs-vJ-6H1"/>
+                                <exclude reference="MLh-wu-vkV"/>
+                                <include reference="Upg-sn-N0h"/>
+                                <include reference="WFR-1o-fxu"/>
+                                <exclude reference="j5s-Em-zxr"/>
+                                <exclude reference="scm-q7-NT3"/>
+                                <include reference="GHk-fx-qgS"/>
+                                <exclude reference="Xbi-xE-2pk"/>
+                                <include reference="oSg-F9-Jpg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                 </viewController>
