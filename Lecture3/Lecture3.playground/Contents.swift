@@ -78,7 +78,24 @@ for (k,v) in occupation
 
 
 
+class Person {
+    func doubler(x: Int) -> Int {
+        return x*2
+    }
+    
+    var tripler = {(x:Int)->Int in return x*3}
+    var quadrupler = {(x:Int)->Int in return x*4}
+    
+    func apply(x: Int, functionToApply:Int->Int) -> Int {
+        return functionToApply(x)
+    }
+}
 
+var karan = Person()
+
+karan.apply(5, functionToApply: karan.doubler)
+karan.apply(5, functionToApply: karan.tripler)
+karan.apply(5, functionToApply: karan.quadrupler)
 
 
 func doubler(x:Int) -> Int //Int->Int is a TYPE!!
