@@ -21,21 +21,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XDQ-CB-DYW">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOL-Ul-1NV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOL-Ul-1NV">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="179"/>
                                         <state key="normal" title="Problem 2"/>
                                         <connections>
                                             <segue destination="kYc-hO-nKy" kind="show" id="yEv-IU-196"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu8-vE-pED">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu8-vE-pED">
                                         <rect key="frame" x="0.0" y="179" width="560" height="178"/>
                                         <state key="normal" title="Problem 3"/>
                                         <connections>
                                             <segue destination="j4z-AI-zlF" kind="show" id="4yh-m5-oUs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bc9-qF-sE4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bc9-qF-sE4">
                                         <rect key="frame" x="0.0" y="357" width="560" height="179"/>
                                         <state key="normal" title="Problem 4"/>
                                         <connections>
@@ -62,7 +62,7 @@
         <!--Problem3 View Controller-->
         <scene sceneID="CbT-Bo-qQX">
             <objects>
-                <viewController id="j4z-AI-zlF" userLabel="Problem3 View Controller" customClass="Problem3ViewController" sceneMemberID="viewController">
+                <viewController id="j4z-AI-zlF" userLabel="Problem3 View Controller" customClass="Problem3ViewController" customModule="Assignment2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BbV-aj-G8R"/>
                         <viewControllerLayoutGuide type="bottom" id="uui-ky-Kue"/>
@@ -71,9 +71,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiQ-NB-heq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiQ-NB-heq">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
-                                <color key="backgroundColor" red="1" green="0.9727197957" blue="0.22627758819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLh-p9-DTS">
+                                        <rect key="frame" x="265" y="253" width="30" height="30"/>
+                                        <state key="normal" title="Run"/>
+                                        <connections>
+                                            <action selector="myButton:" destination="j4z-AI-zlF" eventType="touchUpInside" id="bBN-bl-0Wd"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CV6-xC-PgM">
+                                        <rect key="frame" x="160" y="303" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="2s2-3L-z9p"/>
+                                            <constraint firstAttribute="width" constant="240" id="DzK-hL-0EA"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.9727197957" blue="0.22627758819999999" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="rLh-p9-DTS" firstAttribute="centerY" secondItem="uiQ-NB-heq" secondAttribute="centerY" id="4JT-6t-ObB"/>
+                                    <constraint firstItem="CV6-xC-PgM" firstAttribute="centerX" secondItem="uiQ-NB-heq" secondAttribute="centerX" id="Mpd-QM-Ptm"/>
+                                    <constraint firstItem="CV6-xC-PgM" firstAttribute="top" secondItem="rLh-p9-DTS" secondAttribute="bottom" constant="20" id="VW7-Ph-5lm"/>
+                                    <constraint firstItem="rLh-p9-DTS" firstAttribute="centerX" secondItem="uiQ-NB-heq" secondAttribute="centerX" id="nsT-sI-VUF"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,6 +110,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uiQ-NB-heq" secondAttribute="trailing" id="itJ-cz-Cey"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myText" destination="CV6-xC-PgM" id="u3c-bi-LRh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55d-BQ-Rqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,7 +121,7 @@
         <!--Problem4 View Controller-->
         <scene sceneID="khy-Wn-GkF">
             <objects>
-                <viewController id="CXE-Ab-Pk6" userLabel="Problem4 View Controller" sceneMemberID="viewController">
+                <viewController id="CXE-Ab-Pk6" userLabel="Problem4 View Controller" customClass="Problem4ViewController" customModule="Assignment2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bgq-15-gIj"/>
                         <viewControllerLayoutGuide type="bottom" id="en3-lX-Jdz"/>
@@ -101,9 +130,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COC-TX-oeJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COC-TX-oeJ">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
-                                <color key="backgroundColor" red="0.12217444450000001" green="0.93475602579999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08c-i0-OMp">
+                                        <rect key="frame" x="257" y="253" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="hitButton:" destination="CXE-Ab-Pk6" eventType="touchUpInside" id="hLX-PH-7fb"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8kB-Ia-s9u">
+                                        <rect key="frame" x="160" y="315" width="240" height="128"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="7Oq-NG-IzL"/>
+                                            <constraint firstAttribute="height" constant="128" id="9sH-VK-AmB"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12217444450000001" green="0.93475602579999995" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8kB-Ia-s9u" firstAttribute="top" secondItem="08c-i0-OMp" secondAttribute="bottom" constant="32" id="IuO-Cn-NFQ"/>
+                                    <constraint firstItem="8kB-Ia-s9u" firstAttribute="centerX" secondItem="COC-TX-oeJ" secondAttribute="centerX" id="N46-Ye-nHT"/>
+                                    <constraint firstItem="08c-i0-OMp" firstAttribute="centerY" secondItem="COC-TX-oeJ" secondAttribute="centerY" id="ewE-RN-aHt"/>
+                                    <constraint firstItem="08c-i0-OMp" firstAttribute="centerX" secondItem="COC-TX-oeJ" secondAttribute="centerX" id="oBL-qh-it8"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -114,6 +169,9 @@
                             <constraint firstItem="COC-TX-oeJ" firstAttribute="top" secondItem="Bgq-15-gIj" secondAttribute="bottom" id="wQr-ge-8hc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="8kB-Ia-s9u" id="fcg-KN-6e1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWT-Qp-zLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,7 +180,7 @@
         <!--Problem2 View Controller-->
         <scene sceneID="dVl-CI-tcn">
             <objects>
-                <viewController id="kYc-hO-nKy" userLabel="Problem2 View Controller" customClass="Problem2ViewController" sceneMemberID="viewController">
+                <viewController id="kYc-hO-nKy" userLabel="Problem2 View Controller" customClass="Problem2ViewController" customModule="Assignment2" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T4T-Kn-dPN"/>
                         <viewControllerLayoutGuide type="bottom" id="fRf-6q-k5c"/>
@@ -131,22 +189,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-dP-NBZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffx-dP-NBZ">
                                 <rect key="frame" x="20" y="64" width="560" height="536"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-Fa-HCe">
-                                        <rect key="frame" x="265" y="75" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEE-Fa-HCe">
+                                        <rect key="frame" x="265" y="253" width="30" height="30"/>
                                         <state key="normal" title="Run"/>
+                                        <connections>
+                                            <action selector="Hit:" destination="kYc-hO-nKy" eventType="touchUpInside" id="b7k-Kk-3X6"/>
+                                        </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4m7-LW-CIx">
-                                        <rect key="frame" x="160" y="204" width="240" height="128"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4m7-LW-CIx">
+                                        <rect key="frame" x="160" y="313" width="240" height="128"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="Onm-Tl-4uY"/>
+                                            <constraint firstAttribute="height" constant="128" id="Ps4-jf-5xS"/>
+                                        </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.61201751339999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.61201751339999999" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="4m7-LW-CIx" firstAttribute="top" secondItem="PEE-Fa-HCe" secondAttribute="bottom" constant="30" id="52e-Mk-6my"/>
+                                    <constraint firstItem="PEE-Fa-HCe" firstAttribute="centerX" secondItem="ffx-dP-NBZ" secondAttribute="centerX" id="E8p-VK-lEa"/>
+                                    <constraint firstItem="4m7-LW-CIx" firstAttribute="centerX" secondItem="ffx-dP-NBZ" secondAttribute="centerX" id="Hg7-bn-F11"/>
+                                    <constraint firstItem="PEE-Fa-HCe" firstAttribute="centerY" secondItem="ffx-dP-NBZ" secondAttribute="centerY" id="eR6-PN-Y9f"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -157,6 +228,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ffx-dP-NBZ" secondAttribute="trailing" id="iXf-qu-dl2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ShowText" destination="4m7-LW-CIx" id="Q46-s9-ti7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKb-aQ-TZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
