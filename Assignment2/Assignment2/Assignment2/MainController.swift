@@ -52,7 +52,7 @@ class Problem2ViewController: UIViewController {
         
 
         var after = [[Bool]](count:10, repeatedValue: Array(count:10, repeatedValue:false))
-        var afterAlive = 0
+        //var afterAlive = 0
         
         for Co in 0...9
         {
@@ -60,6 +60,7 @@ class Problem2ViewController: UIViewController {
             {
                 switch before[Co][Ro]{
                 case true:
+                    var afterAlive = 0
                     if Co+1<=9
                     {
                         if before[Co+1][Ro] == true
@@ -270,7 +271,7 @@ class Problem2ViewController: UIViewController {
                     }
                     
                 case false:
-                    
+                    var afterAlive = 0
                     if Co+1<=9
                     {
                         if before[Co+1][Ro] == true
