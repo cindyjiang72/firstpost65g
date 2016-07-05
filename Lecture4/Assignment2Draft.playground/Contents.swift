@@ -20,7 +20,7 @@ for Col in 0...9
     }
 }
 
-ShowText.text = "The number of alive cells before is: \(beforeAlive)"
+//ShowText.text = "The number of alive cells before is: \(beforeAlive)"
 
 
 
@@ -919,6 +919,165 @@ func step(before:[[Bool]])->[[Bool]]
     
     
 }
+
+
+
+
+
+func neighbors(coor:(Int, Int))->[(Int, Int)]
+{
+    var f = [(Int, Int)]()
+    
+    if coor.0+1<=9
+    {
+        f.append((coor.0+1, coor.1))
+    }
+    else
+    {
+        f.append((coor.0-9, coor.1))
+    }//+o
+    
+    if coor.1+1<=9
+    {
+        f.append((coor.0, coor.1+1))
+    }
+    else
+    {
+        f.append((coor.0, coor.1-9))
+        
+    }//o+
+    
+    if coor.0+1<=9
+    {
+        if coor.1+1<=9
+        {
+            f.append((coor.0+1, coor.1+1))
+        }
+        else
+        {
+            f.append((coor.0+1, coor.1-9))
+        }
+    }
+    else
+    {
+        if coor.1+1<=9
+        {
+            f.append((coor.0-9, coor.1+1))
+        }
+        else
+        {
+            f.append((coor.0-9, coor.1-9))
+        }
+    }//++
+    
+    if coor.0-1>=0
+    {
+        
+        f.append((coor.0-1, coor.1))//-o
+        
+        if coor.1+1<=9
+        {
+            f.append((coor.0-1, coor.1+1))
+        }
+        else
+        {
+            f.append((coor.0-1, coor.1-9))
+        }//-+
+        
+        
+        if coor.1-1>=0
+        {
+            f.append((coor.0-1, coor.1-1))
+        }
+        else
+        {
+            f.append((coor.0-1, coor.1+9))
+        }//--
+    }
+    else //coor.0-1<0
+    {
+        f.append((coor.0+9, coor.1))//-o
+        
+        if coor.1+1<=9
+        {
+            f.append((coor.0+9, coor.1+1))
+        }
+        else
+        {
+            f.append((coor.0+1, coor.1-9))
+        }//-+
+        
+        if coor.1-1>=0
+        {
+            f.append((coor.0+9, coor.1-1))
+        }
+        else
+        {
+            f.append((coor.0+9, coor.1+9))
+        }//--
+    }
+    
+    
+    if coor.1-1>=0
+    {
+        
+        f.append((coor.0, coor.1-1))//0-
+        
+        if coor.0+1<=9
+        {
+            f.append((coor.0+1, coor.1-1))
+        }
+        else
+        {
+            f.append((coor.0-9, coor.1-1))
+        }//+-
+        
+    }
+    else //Ro-1<0
+    {
+        f.append((coor.0, coor.1+9))//0-
+        
+        if coor.0+1<=9
+        {
+            f.append((coor.0+1, coor.1+9))
+        }
+        else
+        {
+            f.append((coor.0-9, coor.1+9))
+        }//+-
+        
+    }
+    
+    return f
+    
+}
+
+var final = neighbors((0,0))
+
+for i in 0...7
+{
+    print(final[i])
+}
+
+
+
+
+
+
+func text(c:(Int, Int))->[(Int, Int)]
+{
+    var stuff = [(Int, Int)]()
+    
+    stuff.append((c.0 + 1, c.1 + 1))
+}
+
+var finals = text((0,0))
+
+print(finals)
+
+print((1,1))
+
+
 
 
 

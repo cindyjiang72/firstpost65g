@@ -589,7 +589,7 @@ func step2(before:[[Bool]])->[[Bool]]
                 var final = neighbors((Co,Ro))
                 for i in 0...7
                 {
-                    if final[i] == true
+                    if before[final[i].0][final[i].1] == true
                     {
                         afterAlive += 1
                     }
@@ -613,7 +613,7 @@ func step2(before:[[Bool]])->[[Bool]]
                     var final = neighbors((Co,Ro))
                     for i in 0...7
                     {
-                        if final[i] == true
+                        if before[final[i].0][final[i].1] == true
                         {
                             afterAlive += 1
                         }
@@ -625,10 +625,11 @@ func step2(before:[[Bool]])->[[Bool]]
                     
                 }
             }
+    }
 
     
         return after
-}
+
 }
 
 
