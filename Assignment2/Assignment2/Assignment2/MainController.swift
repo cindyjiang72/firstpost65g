@@ -66,7 +66,7 @@ class Problem2ViewController: UIViewController {
             }
         }
         
-        ShowText.text = "The number of alive cells after is: \(counts)"
+        ShowText.text = "The number of alive cells before is: \(beforeAlive)\nThe number of alive cells after is: \(counts)"
         
         
         
