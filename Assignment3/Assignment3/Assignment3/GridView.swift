@@ -84,7 +84,34 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridColor: UIColor = UIColor.blackColor()
     
-    @IBInspectable var gridWidth: CGFloat
+    @IBInspectable var gridWidth: CGFloat = 2.0
+    
+    override func drawRect(rect: CGRect) {
+        
+        let width: CGFloat = self.bounds.width
+        let height: CGFloat = self.bounds.height
+        
+        let plusPath = UIBezierPath()
+        
+        let gridWidth:CGFloat = width/CGFloat(cols)
+        
+        let gridHeight:CGFloat = height/CGFloat(rows)
+        
+        for i in 1...rows+1{
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
 
 
