@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D64CC7451D31932C009B4E1C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64CC7441D31932C009B4E1C /* GridView.swift */; };
 		D6FF36F11D302E7D007692E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF36F01D302E7D007692E3 /* AppDelegate.swift */; };
 		D6FF36F31D302E7D007692E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF36F21D302E7D007692E3 /* ViewController.swift */; };
 		D6FF36F61D302E7D007692E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FF36F41D302E7D007692E3 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D64CC7441D31932C009B4E1C /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		D6FF36ED1D302E7D007692E3 /* Assignment3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6FF36F01D302E7D007692E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6FF36F21D302E7D007692E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				D6FF36F01D302E7D007692E3 /* AppDelegate.swift */,
 				D6FF36F21D302E7D007692E3 /* ViewController.swift */,
+				D64CC7441D31932C009B4E1C /* GridView.swift */,
 				D6FF36F41D302E7D007692E3 /* Main.storyboard */,
 				D6FF36F71D302E7D007692E3 /* Assets.xcassets */,
 				D6FF36F91D302E7D007692E3 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6FF36F31D302E7D007692E3 /* ViewController.swift in Sources */,
+				D64CC7451D31932C009B4E1C /* GridView.swift in Sources */,
 				D6FF36F11D302E7D007692E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +292,7 @@
 				D6FF37011D302E7D007692E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
