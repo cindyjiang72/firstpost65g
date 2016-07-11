@@ -84,6 +84,21 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridColor: UIColor = UIColor.blackColor()
     
+    func color(value: CellState) -> UIColor
+    {
+        switch value
+        {
+        case .Living:
+            return livingColor
+        case .Empty:
+            return emptyColor
+        case .Born:
+            return bornColor
+        case .Dead:
+            return diedColor
+        }
+    }
+    
     @IBInspectable var gridWidth: CGFloat = 2.0
     
     override func drawRect(rect: CGRect) {
@@ -93,20 +108,47 @@ import UIKit
         
         let plusPath = UIBezierPath()
         
-        let gridWidth:CGFloat = width/CGFloat(cols)
+        //let gridLength: CGFloat = width/CGFloat(max(rows,cols))
+        //let gridHeight: CGFloat = width/CGFloat(max(rows,cols))
         
+        let gridLength:CGFloat = width/CGFloat(cols)
         let gridHeight:CGFloat = height/CGFloat(rows)
         
-        for i in 1...rows+1{
+        for i in 0...rows{
             
+            plusPath.moveToPoint(CGPoint(x:0.0,y:CGFloat(i)*gridHeight))
+            plusPath.addLineToPoint(CGPoint(x:width,y:CGFloat(i)*gridHeight))
+
             
         }
         
+        for j in 0...cols{
+            
+            plusPath.moveToPoint(CGPoint(x:CGFloat(j)*gridLength,y:0.0))
+            plusPath.addLineToPoint(CGPoint(x:CGFloat(j)*gridLength,y:height))
+
+            
+        }
+        
+        gridColor.setStroke()
+        plusPath.lineWidth = gridWidth
+        plusPath.stroke()
         
         
         
         
         
+        for r in 1...rows {
+            for c in 1...cols {
+                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(r-1)*gridLength,CGFloat(c-1)*gridHeight,gridLength,gridHeight))
+                let colorr: UIColor = color(grid[r-1][c-1])
+                colorr.setFill()
+                path.fill()
+
+            }
+        }
+        
+   
         
         
         
