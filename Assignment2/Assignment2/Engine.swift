@@ -575,6 +575,8 @@ func neighbors(coor:(Int, Int))->[(Int, Int)]
 }
 
 
+
+
 func step2(before:[[Bool]])->[[Bool]]
 {
     var after = [[Bool]](count:10, repeatedValue: Array(count:10, repeatedValue:false))
@@ -607,29 +609,30 @@ func step2(before:[[Bool]])->[[Bool]]
                     }
                 }
                 
-                    
-                    case false:
-                    var afterAlive = 0
-                    var final = neighbors((Co,Ro))
-                    for i in 0...7
+                
+            case false:
+                var afterAlive = 0
+                var final = neighbors((Co,Ro))
+                for i in 0...7
+                {
+                    if before[final[i].0][final[i].1] == true
                     {
-                        if before[final[i].0][final[i].1] == true
-                        {
-                            afterAlive += 1
-                        }
+                        afterAlive += 1
                     }
-                    if afterAlive == 3
-                    {
-                        after[Co][Ro] = true
-                    }
-                    
                 }
+                if afterAlive == 3
+                {
+                    after[Co][Ro] = true
+                }
+                
             }
+        }
     }
-
     
-        return after
-
+    
+    return after
+    
 }
+
 
 
