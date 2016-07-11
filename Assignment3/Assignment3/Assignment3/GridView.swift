@@ -78,8 +78,6 @@ import UIKit
             
         }
     }
-    
-    //grid = [[CellState]](count: cols, repeatedValue: Array(count:rows, repeatedValue: .Empty))
 
     
   
@@ -193,10 +191,6 @@ import UIKit
         }
 
     }
-    
-        
-    
-    
     
     
     
@@ -339,6 +333,9 @@ import UIKit
         let numcol = before[0].count
         var after = [[Bool]](count:numrow, repeatedValue: Array(count:numcol, repeatedValue:Bool()))
         
+        
+        
+        
         for Ro in 0...numrow-1
         {
             for Co in 0...numcol-1
@@ -347,7 +344,7 @@ import UIKit
                 case true:
                     var afterAlive = 0
                     var final = neighbors((Ro,Co))
-                    for i in 0...(numrow*numcol-2)
+                    for i in 0...7
                     {
                         if before[final[i].0][final[i].1] == true
                         {
@@ -359,6 +356,7 @@ import UIKit
                     if afterAlive == 2
                     {
                         after[Ro][Co] = true
+                        
                     }
                     else
                     {
@@ -374,7 +372,7 @@ import UIKit
                 case false:
                     var afterAlive = 0
                     var final = neighbors((Ro,Co))
-                    for i in 0...(numrow*numcol-2)
+                    for i in 0...7
                     {
                         if before[final[i].0][final[i].1] == true
                         {
@@ -386,7 +384,7 @@ import UIKit
                         after[Ro][Co] = true
                     }
                     else {
-                        after[Ro][Co] = true
+                        after[Ro][Co] = false
                     }
                     
                 }
@@ -399,26 +397,26 @@ import UIKit
     }
     
     
+    
     func boolto(value: Bool) -> CellState {
         switch value
         {
         case true:
             return .Living
-//        case .Empty:
-//            return emptyColor
-//        case .Born:
-//            return bornColor
         case false:
-            return .Dead
-        }    }
+            return .Empty
+        }
+    }
+    
+
+    
+    
+    
     
 
 
     
-    
-    @IBOutlet weak var GridView: UIView!
-    
-    @IBAction func runButton(sender:UIButton){
+    func runButton() {
         
         var newBool = [[Bool]](count:cols, repeatedValue: Array(count:rows, repeatedValue:Bool()))
 
@@ -443,8 +441,10 @@ import UIKit
         
         for rr in 1...rows {
             for cc in 1...cols {
-                setNeedsDisplayInRect(CGRect(x: CGFloat(rr)*gridLength, y: CGFloat(cc)*gridHeight, width: gridLength, height: gridHeight))
-                grid[rr][cc] = boolto(afterBool[rr][cc])
+
+                grid[rr-1][cc-1] = boolto(afterBool[rr-1][cc-1])
+                
+                setNeedsDisplayInRect(CGRect(x: CGFloat(rr-1)*gridLength, y: CGFloat(cc-1)*gridHeight, width: gridLength, height: gridHeight))
                 
             }
         }

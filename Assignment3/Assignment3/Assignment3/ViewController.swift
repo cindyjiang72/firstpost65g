@@ -20,6 +20,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var gridview: GridView!
+    @IBAction func hitButton(sender: AnyObject) {
+        gridview.runButton()
+        
+        
+    
+    }
     
 }
 

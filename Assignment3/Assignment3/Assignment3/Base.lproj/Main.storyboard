@@ -55,6 +55,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-KN-F9D">
                                 <rect key="frame" x="285" y="540" width="30" height="30"/>
                                 <state key="normal" title="Run"/>
+                                <connections>
+                                    <action selector="hitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CNn-BR-IRh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -69,6 +72,9 @@
                             <constraint firstItem="JKh-z1-msd" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="8:10" id="mNb-4i-ITg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gridview" destination="JKh-z1-msd" id="e3e-NI-daE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
