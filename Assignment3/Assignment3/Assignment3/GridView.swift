@@ -209,6 +209,9 @@ import UIKit
             f.append((coor.0-c, coor.1))
         }//+o
         
+        
+        
+        
         if coor.1+1<=r
         {
             f.append((coor.0, coor.1+1))
@@ -218,6 +221,8 @@ import UIKit
             f.append((coor.0, coor.1-r))
             
         }//o+
+        
+        
         
         if coor.0+1<=c
         {
@@ -276,7 +281,7 @@ import UIKit
             }
             else
             {
-                f.append((coor.0+1, coor.1-r))
+                f.append((coor.0+c, coor.1-r))
             }//-+
             
             if coor.1-1>=0
@@ -344,10 +349,10 @@ import UIKit
             {
                 switch before[Ro][Co]{
                     
-                    
                 case true:
                     var afterAlive = 0
                     var final = neighbors((Ro,Co))
+                    
                     for i in 0...7
                     {
                         if before[final[i].0][final[i].1] == true
@@ -364,12 +369,14 @@ import UIKit
                     }
                     else
                     {
-                        if afterAlive == 3{
+                        if afterAlive == 3
+                        {
                             after[Ro][Co] = true
                         }
                         else {
                             after[Ro][Co] = false
                         }
+                    }
                         
                         
                         if grid[Ro][Co] == .Born {
@@ -397,8 +404,8 @@ import UIKit
                         }
                         
                         
-                    }
-                    
+                
+                
                 case false:
                     var afterAlive = 0
                     var final = neighbors((Ro,Co))
@@ -409,11 +416,13 @@ import UIKit
                             afterAlive += 1
                         }
                     }
+                    
                     if afterAlive == 3
                     {
                         after[Ro][Co] = true
                     }
-                    else {
+                    else
+                    {
                         after[Ro][Co] = false
                     }
                     
@@ -481,7 +490,8 @@ import UIKit
                         }
                         
                     }
-                    
+                
+                
                 
             }
         }
