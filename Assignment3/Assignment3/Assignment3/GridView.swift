@@ -11,8 +11,6 @@ import UIKit
 
 @IBDesignable class GridView: UIView {
     
-
-    
     
     enum CellState : String
     {
@@ -67,14 +65,14 @@ import UIKit
     
     @IBInspectable var rows: Int = 20{
         didSet{
-            grid = [[CellState]](count: cols, repeatedValue: Array(count:rows, repeatedValue: .Empty))
+            grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
             
         }
         
     }
     @IBInspectable var cols: Int = 20{
         didSet{
-            grid = [[CellState]](count: cols, repeatedValue: Array(count:rows, repeatedValue: .Empty))
+            grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
             
         }
     }
@@ -102,9 +100,6 @@ import UIKit
         }
         
     }
-    
-
-
     
     
     @IBInspectable var gridWidth: CGFloat = 2.0
@@ -141,10 +136,10 @@ import UIKit
         
 
         
-        for r in 1...rows {
-            for c in 1...cols {
-                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(r-1)*gridLength,CGFloat(c-1)*gridHeight,gridLength,gridHeight))
-                let colornew: UIColor = color(grid[r-1][c-1])
+        for r in 0...rows-1 {
+            for c in 0...cols-1 {
+                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(r)*gridLength,CGFloat(c)*gridHeight,gridLength,gridHeight))
+                let colornew: UIColor = color(grid[r][c])
                 colornew.setFill()
                 path.fill()
             }
@@ -183,7 +178,7 @@ import UIKit
             let y = Int((touch.locationInView(self).y)/gridHeight)
             
             let before = getPointState(touch.locationInView(self))
-             grid[x][y] = toggle(before)
+            grid[x][y] = toggle(before)
             
             
             
@@ -191,6 +186,9 @@ import UIKit
         }
 
     }
+    
+    
+    
     
     
     
@@ -333,7 +331,11 @@ import UIKit
         let numcol = before[0].count
         var after = [[Bool]](count:numrow, repeatedValue: Array(count:numcol, repeatedValue:Bool()))
         
-        
+        let width: CGFloat = self.bounds.width
+        let height: CGFloat = self.bounds.height
+        let gridLength:CGFloat = width/CGFloat(cols)
+        let gridHeight:CGFloat = height/CGFloat(rows)
+
         
         
         for Ro in 0...numrow-1
@@ -341,6 +343,8 @@ import UIKit
             for Co in 0...numcol-1
             {
                 switch before[Ro][Co]{
+                    
+                    
                 case true:
                     var afterAlive = 0
                     var final = neighbors((Ro,Co))
@@ -366,8 +370,34 @@ import UIKit
                         else {
                             after[Ro][Co] = false
                         }
+                        
+                        
+                        if grid[Ro][Co] == .Born {
+                            if after[Ro][Co] == true {
+                                grid[Ro][Co] = .Living
+                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                            }
+                            else {
+                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                                grid[Ro][Co] = .Dead
+                                
+                            }
+                        }
+                        
+                        
+                       if grid[Ro][Co] == .Living {
+                            if after[Ro][Co] == true {
+                                grid[Ro][Co] = .Living
+                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                            }
+                            else {
+                                grid[Ro][Co] = .Dead
+                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                            }
+                        }
+                        
+                        
                     }
-                    
                     
                 case false:
                     var afterAlive = 0
@@ -387,6 +417,31 @@ import UIKit
                         after[Ro][Co] = false
                     }
                     
+                    
+                    if grid[Ro][Co] == .Dead {
+                        if after[Ro][Co] == true {
+                            grid[Ro][Co] = .Born
+                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                        }
+                        else {
+                            grid[Ro][Co] = .Empty
+                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                        }
+                    }
+                    
+                    
+                    if grid[Ro][Co] == .Empty {
+                        if after[Ro][Co] == true {
+                            grid[Ro][Co] = .Born
+                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                        }
+                        else {
+                            grid[Ro][Co] = .Empty
+                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
+                        }
+                    }
+                    
+                    
                 }
             }
         }
@@ -396,80 +451,51 @@ import UIKit
         
     }
     
-    
-    
-    func boolto(value: Bool) -> CellState {
-        switch value
-        {
-        case true:
-            return .Living
-        case false:
-            return .Empty
-        }
-    }
-    
 
-    
-    
-    
-    
 
 
     
     func runButton() {
         
-        var newBool = [[Bool]](count:cols, repeatedValue: Array(count:rows, repeatedValue:Bool()))
+        var newBool = [[Bool]](count:rows, repeatedValue: Array(count:cols, repeatedValue:Bool()))
 
         for r in 1...rows {
             for c in 1...cols {
                 if grid[r-1][c-1] == .Empty {
+                
                     newBool[r-1][c-1] = false
                 }
-                else {
-                    newBool[r-1][c-1] = true
-                }
+                else
+                {
+                    if grid[r-1][c-1] == .Dead {
+                    newBool[r-1][c-1] = false
+                    }
+                    else
+                    {
+                        if grid[r-1][c-1] == .Living {
+                            newBool[r-1][c-1] = true
+                        }
+                        else {
+                            if grid[r-1][c-1] == .Born {
+                                newBool[r-1][c-1] = true}
+                        }
+                        
+                    }
+                    
                 
             }
         }
-        
-        let width: CGFloat = self.bounds.width
-        let height: CGFloat = self.bounds.height
-        let gridLength:CGFloat = width/CGFloat(cols)
-        let gridHeight:CGFloat = height/CGFloat(rows)
         
         var afterBool = step2(newBool)
         
-        for rr in 1...rows {
-            for cc in 1...cols {
 
-                grid[rr-1][cc-1] = boolto(afterBool[rr-1][cc-1])
-                
-                setNeedsDisplayInRect(CGRect(x: CGFloat(rr-1)*gridLength, y: CGFloat(cc-1)*gridHeight, width: gridLength, height: gridHeight))
-                
-            }
+        
         }
-        
 
-        
+    
+
+    
     }
-
-    
-
-    
 }
 
     
-    
-    
-    
-    
-    
-    
-
-
-    
-
-
-
-
-
