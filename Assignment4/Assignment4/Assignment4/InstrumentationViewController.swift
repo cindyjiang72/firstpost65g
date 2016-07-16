@@ -9,6 +9,13 @@
 import UIKit
 
 class InstrumentationViewController: UIViewController {
+    
+    @IBAction func HitButton(sender: AnyObject) {
+        if let url = NSURL(string: "https://icons8.com") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

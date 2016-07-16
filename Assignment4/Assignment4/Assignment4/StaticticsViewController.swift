@@ -10,6 +10,11 @@ import UIKit
 
 class StaticticsViewController: UIViewController {
     
+    @IBAction func buttonClicked(sender: AnyObject) {
+        if let url = NSURL(string: "https://icons8.com") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
