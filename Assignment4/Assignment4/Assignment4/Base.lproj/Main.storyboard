@@ -31,7 +31,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uAh-o7-RqA" secondAttribute="trailing" id="vAb-aj-vhr"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Instrumentation" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Instrumentation" image="Pineapple Filled-25" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,7 +62,7 @@
                             <constraint firstItem="lrh-9v-6nw" firstAttribute="leading" secondItem="UA4-2V-if1" secondAttribute="leadingMargin" id="qBz-19-Rg3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statictics" id="NA3-27-MPD"/>
+                    <tabBarItem key="tabBarItem" title="Statictics" image="Carrot Filled-50" id="NA3-27-MPD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIp-XB-gaU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,7 +93,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="24N-rX-XU5" secondAttribute="trailing" id="kiO-CG-AcQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simulation" image="Bavarian Pretzel-50" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="Watermelon-25" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,7 +121,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bavarian Pretzel-50" width="50" height="50"/>
-        <image name="first" width="30" height="30"/>
+        <image name="Carrot Filled-50" width="25" height="25"/>
+        <image name="Pineapple Filled-25" width="25" height="25"/>
+        <image name="Watermelon-25" width="25" height="25"/>
     </resources>
 </document>
