@@ -14,13 +14,13 @@ import UIKit
     
     enum CellState : String
     {
-        case Living = "Living"
+        case Living //= "Living"
         
-        case Empty = "Empty"
+        case Empty //= "Empty"
         
-        case Born = "Born"
+        case Born //= "Born"
         
-        case Dead = "Dead"
+        case Dead //= "Dead"
         
     }
     
