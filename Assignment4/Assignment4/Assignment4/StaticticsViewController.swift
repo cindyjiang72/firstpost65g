@@ -10,6 +10,7 @@ import UIKit
 
 class StaticticsViewController: UIViewController {
     
+    //comment on the source of icon
     @IBAction func buttonClicked(sender: AnyObject) {
         if let url = NSURL(string: "https://icons8.com") {
             UIApplication.sharedApplication().openURL(url)

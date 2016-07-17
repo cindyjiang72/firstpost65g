@@ -10,6 +10,7 @@ import UIKit
 
 class SimulationViewController: UIViewController {
 
+    //comment on the source of icon
     @IBAction func buttonHit(sender: AnyObject) {
         if let url = NSURL(string: "https://icons8.com") {
             UIApplication.sharedApplication().openURL(url)
