@@ -15,13 +15,28 @@ class InstrumentationViewController: UIViewController {
         if let url = NSURL(string: "https://icons8.com") {
             UIApplication.sharedApplication().openURL(url)
         }
-        
     }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.gotNotification(_:)), name: "TestName", object: nil)
+
     }
+    
+    
+    
+    @objc func gotNotification(notification : NSNotification) {
+        if let userInfo = notification.userInfo {
+            print("Did receive notification from \(userInfo["Notification"]) in observer")
+        }
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
