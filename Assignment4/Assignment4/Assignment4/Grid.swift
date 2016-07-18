@@ -227,7 +227,7 @@ import Foundation
             }
         }
         
-        
+        //private (set) lazy var sharedInstance = StandardEngine(rows: 10, cols: 10)
         
         var rows: UInt = 10 {
             didSet {

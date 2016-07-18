@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InstrumentationViewController: UIViewController, EngineDelegate {
+class InstrumentationViewController: UIViewController{
     
     //comment on the source of icon
     @IBAction func HitButton(sender: AnyObject) {
@@ -18,13 +18,13 @@ class InstrumentationViewController: UIViewController, EngineDelegate {
     }
     
     
-    var engine : EngineProtocol!
+    var engine : StandardEngine!
     
     //override engineDidUpdate Func
-    func engineDidUpdate(withGrid: [[CellState]]) {
-        Rows.text = String(withGrid.count)
-        Columns.text = String(withGrid[0].count)
-    }
+//    func engineDidUpdate(withGrid: [[CellState]]) {
+//        Rows.text = String(withGrid.count)
+//        Columns.text = String(withGrid[0].count)
+//    }
     
     
     
@@ -46,14 +46,18 @@ class InstrumentationViewController: UIViewController, EngineDelegate {
         
     }
     
-    
+    //var standardengine : StandardEngine!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        StandardEngine.sharedInstance.rows = 20
-        StandardEngine.sharedInstance.rows = 20
+        
+        //tried to changed the rows and cols but got an error
         engine = StandardEngine.sharedInstance
+//        engine.sharedInstance.rows = 20
+//        engine.sharedInstance.cols = 20
+        
+        
 
     }
 

@@ -21,11 +21,13 @@ class SimulationViewController: UIViewController, EngineDelegate {
     //step() function invoked when button clicked
     @IBAction func StepHit(sender: AnyObject) {
         //tried to call step() function but returns an error
-        //StandardEngine.step()
+        
+        //standardengine.step()
         
     }
     
     var engine : EngineProtocol!
+    var standardengine : StandardEngine!
 
     //override engineDidUpdate because SimulationViewController implements EngineDelegate
     func engineDidUpdate(withGrid: [[CellState]]) {
@@ -37,12 +39,14 @@ class SimulationViewController: UIViewController, EngineDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        StandardEngine.sharedInstance.rows = 20
-        StandardEngine.sharedInstance.cols = 20
+        
+        //standardengine.sharedInstance.rows = 20
+        //standardengine.sharedInstance.cols = 20
+        
         //tried to set SimulationViewController as the delegate but got an error
         //SimulationViewController.delegate = self
 
-        engine = StandardEngine.sharedInstance
+        //engine = standardengine.sharedInstance
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.gotNotification(_:)), name: "TestName", object: nil)
             }
