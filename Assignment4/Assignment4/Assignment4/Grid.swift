@@ -29,41 +29,36 @@ import Foundation
     }
 
     protocol EngineDelegate {
-        func engineDidUpdate(withGrid: GridProtocol)
+        func engineDidUpdate(withGrid: [[CellState]])
     
     }
 
     protocol EngineProtocol {
         var delegate : EngineDelegate? { get set }
-        var grid : GridProtocol { get }
+        var grid : [[CellState]] { get }
         var refreshRate : Double { get set }
-        var refreshTimer : NSTimer { get set }
+        var refreshTimer : NSTimer? { get set }
         var rows: UInt { get set }
         var cols: UInt { get set }
         init(rows: UInt, cols: UInt)
-        func step() -> GridProtocol
+        func step() -> [[CellState]]
     }
 
 
 
     class Grid : GridProtocol {
         
+        var grid : [[CellState]]
+        
         required init(rows: UInt, cols: UInt) {
             self.rows = rows
             self.cols = cols
-        }
-        var rows: UInt //= 20
-        var cols: UInt //= 20
-        
-//        var r = Int(rows)
-//        var c = Int(cols)
-        
-        var grid : [[CellState]] {
-            var r = Int(rows)
-            var c = Int(cols)
+            grid = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
             
-            grid = [[CellState]](count: r, repeatedValue: Array(count:c, repeatedValue: .Empty))
         }
+        var rows: UInt
+        var cols: UInt
+        
         
         func neighbors(coor:(Int, Int))->[(Int, Int)]
         {
@@ -201,27 +196,73 @@ import Foundation
         }
 
         
-        subscript(rows: UInt, cols: UInt) -> CellState? {
+        subscript(row: UInt, col: UInt) -> CellState? {
             get {
-//                if cells.count < Int(row*col) { return nil }
-//                return cells[Int(row * col + col)]
-                return grid[Int(rows)][Int(cols)]
+                return grid[Int(row)][Int(col)]
             }
             set (newValue) {
-//                if newValue == nil { return }
-//                if row < 0 || row >= rows || col < 0 || col >= cols { return }
-//                let cellRow = row * cols + col
-//                cells[Int(cellRow)] = newValue!
-                grid[rows][cols] = newValue!
+                if newValue == nil { return }
+                if row < 0 || row >= rows || col < 0 || col >= cols { return }
+                grid[Int(row)][Int(col)] = newValue!
             }
         }
+        
+        
         
 
 
     }
 
 
-//    class StandardEngine : EngineProtocol {
-//        
-//    }
+    class StandardEngine : EngineProtocol {
+        
+        var delegate : EngineDelegate?
+        var grid : [[CellState]]
+        var refreshRate = 0.0 //variables are unable to default in the protocol so set in class Standard Engine
+        var refreshTimer : NSTimer?
+        
+
+        
+        private static var _sharedInstance = StandardEngine(rows: 10, cols: 10)
+        static var sharedInstance: StandardEngine {
+            get {
+                return _sharedInstance
+            }
+        }
+        
+        
+        
+        var rows: UInt = 10 {
+            didSet {
+                if let delegate = delegate {
+                    delegate.engineDidUpdate(grid)
+                }
+            }
+        }
+        var cols: UInt = 10 {
+            didSet {
+                if let delegate = delegate {
+                    delegate.engineDidUpdate(grid)
+                }
+            }
+        }
+
+        required init(rows: UInt, cols: UInt) {
+            self.rows = rows
+            self.cols = cols
+            grid = Grid(rows: rows, cols: cols).grid
+        }
+        
+        
+
+        
+        func step() -> [[CellState]] {
+            return grid
+        }
+        
+        
+        
+        
+        
+    }
 
