@@ -18,8 +18,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
     
     @IBAction func StepHit(sender: AnyObject) {
-        StandardEngine.step()
-            }
+        //StandardEngine.step()
+        
+    }
 
     
     
@@ -37,6 +38,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         StandardEngine.sharedInstance.rows = 20
+        StandardEngine.sharedInstance.cols = 20
         
         //engine.delegate = self
 

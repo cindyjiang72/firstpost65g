@@ -361,11 +361,23 @@ import Foundation
             
             return after
         }
+        
 
         
-//
-//        @objc func SendNotification() {
-//            NSNotificationCenter.defaultCenter().postNotificationName("EngineNotification", object: nil, userInfo: ["Notification" : grid])
-//        }
+
+        @objc func SendNotification() {
+            let Instance : GridProtocol = Grid(rows: rows, cols: cols)
+            NSNotificationCenter.defaultCenter().postNotificationName("EngineNotification", object: nil, userInfo: ["Notification" : StructChangedNotification(s: Instance)])
+        }
         
 }
+
+class StructChangedNotification {
+    let myStruct : GridProtocol
+    
+    init(s : GridProtocol) {
+        myStruct = s
+    }
+}
+
+

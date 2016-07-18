@@ -47,6 +47,7 @@ class InstrumentationViewController: UIViewController, EngineDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         StandardEngine.sharedInstance.rows = 20
+        StandardEngine.sharedInstance.rows = 20
         engine = StandardEngine.sharedInstance
 
 
