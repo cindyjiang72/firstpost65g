@@ -17,12 +17,11 @@ class StaticticsViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //subsribe to notifications published by StandardEngine
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.gotNotification(_:)), name: "TestName", object: nil)
     }
     
@@ -33,6 +32,15 @@ class StaticticsViewController: UIViewController {
         }
 
     }
+    
+    
+//    func countLiving() -> Int {
+//        
+//    }
+    
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

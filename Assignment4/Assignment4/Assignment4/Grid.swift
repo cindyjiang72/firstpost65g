@@ -8,6 +8,7 @@
 
 import Foundation
 
+    //CellState Enum
     enum CellState : String
     {
         case Living
@@ -16,6 +17,7 @@ import Foundation
         case Dead
     }
 
+    //GridProtocol
     protocol GridProtocol {
         init(rows: UInt, cols: UInt)
         var rows: UInt { get }
@@ -24,11 +26,13 @@ import Foundation
         subscript(row: UInt, col: UInt) -> CellState? { get set }
     }
 
+    //EngineDelegate Protocol
     protocol EngineDelegate {
         func engineDidUpdate(withGrid: [[CellState]])
     
     }
 
+    //EngineProtocol
     protocol EngineProtocol {
         var delegate : EngineDelegate? { get set }
         var grid : [[CellState]] { get }
@@ -42,6 +46,7 @@ import Foundation
 
 
 
+    //class Grid implements GridProtocol
     class Grid : GridProtocol {
         
         var gridarray : [[CellState]]
@@ -202,14 +207,11 @@ import Foundation
                 gridarray[Int(row)][Int(col)] = newValue!
             }
         }
-        
-        
-        
-
 
     }
 
 
+    //StandardEngine class implements EngineProtocol
     class StandardEngine : EngineProtocol {
     
         var delegate : EngineDelegate?
@@ -364,7 +366,7 @@ import Foundation
         
 
         
-
+        //send notification as grid
         @objc func SendNotification() {
             let Instance : GridProtocol = Grid(rows: rows, cols: cols)
             NSNotificationCenter.defaultCenter().postNotificationName("EngineNotification", object: nil, userInfo: ["Notification" : StructChangedNotification(s: Instance)])
@@ -372,6 +374,7 @@ import Foundation
         
 }
 
+//wraps grid array in an object
 class StructChangedNotification {
     let myStruct : GridProtocol
     
