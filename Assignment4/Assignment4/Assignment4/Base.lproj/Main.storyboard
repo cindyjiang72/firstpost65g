@@ -43,6 +43,9 @@
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7lc-cQ-waY" userLabel="RowStepper">
                                                 <rect key="frame" x="233" y="85" width="94" height="29"/>
+                                                <connections>
+                                                    <action selector="IncrementRows:" destination="9pv-A4-QxB" eventType="valueChanged" id="TPS-A7-lc7"/>
+                                                </connections>
                                             </stepper>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uo-XK-hou" userLabel="Columns">
                                                 <rect key="frame" x="230" y="170" width="100" height="30"/>

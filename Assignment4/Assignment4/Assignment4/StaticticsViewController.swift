@@ -30,6 +30,7 @@ class StaticticsViewController: UIViewController {
         if let userInfo = notification.userInfo {
             print("Did receive notification from \(userInfo["Notification"]) in observer")
         }
+        
 
     }
     

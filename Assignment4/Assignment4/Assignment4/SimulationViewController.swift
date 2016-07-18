@@ -26,7 +26,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         
     }
     
-    var engine : EngineProtocol!
+    var engine = StandardEngine.sharedInstance
     var standardengine : StandardEngine!
 
     //override engineDidUpdate because SimulationViewController implements EngineDelegate
@@ -47,6 +47,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         //SimulationViewController.delegate = self
 
         //engine = standardengine.sharedInstance
+        engine.delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.gotNotification(_:)), name: "TestName", object: nil)
             }

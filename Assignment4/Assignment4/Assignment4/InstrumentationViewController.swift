@@ -16,24 +16,18 @@ class InstrumentationViewController: UIViewController{
             UIApplication.sharedApplication().openURL(url)
                         }
     }
+
     
     
-    var engine : StandardEngine!
-    
-    //override engineDidUpdate Func
-//    func engineDidUpdate(withGrid: [[CellState]]) {
-//        Rows.text = String(withGrid.count)
-//        Columns.text = String(withGrid[0].count)
-//    }
-    
+    var engine = StandardEngine.sharedInstance
     
     
     @IBOutlet weak var Rows: UITextField!
     
     //UISTepper increments rows by 10 when clicked
-    @IBAction func IncrementR(sender: AnyObject) {
+    @IBAction func IncrementRows(sender: AnyObject) {
         engine.rows += 10
-        
+        Rows.text = engine.rows.description
     }
     
     
@@ -43,6 +37,7 @@ class InstrumentationViewController: UIViewController{
     //UISTepper increments columns by 10 when clicked
     @IBAction func IncrementC(sender: AnyObject) {
         engine.cols += 10
+        Columns.text = engine.cols.description
         
     }
     
@@ -52,10 +47,8 @@ class InstrumentationViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //tried to changed the rows and cols but got an error
         engine = StandardEngine.sharedInstance
-//        engine.sharedInstance.rows = 20
-//        engine.sharedInstance.cols = 20
+
         
         
 
