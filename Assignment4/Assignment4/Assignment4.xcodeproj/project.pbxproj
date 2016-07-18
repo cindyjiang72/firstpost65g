@@ -15,6 +15,7 @@
 		D666E2D71D36D7EB0034A92E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D666E2D51D36D7EB0034A92E /* LaunchScreen.storyboard */; };
 		D666E2DF1D36EB6F0034A92E /* StaticticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D666E2DE1D36EB6F0034A92E /* StaticticsViewController.swift */; };
 		D6DF9FE21D3BE8CA0045E15C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DF9FE11D3BE8CA0045E15C /* Grid.swift */; };
+		D6DF9FE41D3C9AE20045E15C /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DF9FE31D3C9AE20045E15C /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D666E2D81D36D7EB0034A92E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D666E2DE1D36EB6F0034A92E /* StaticticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticticsViewController.swift; sourceTree = "<group>"; };
 		D6DF9FE11D3BE8CA0045E15C /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		D6DF9FE31D3C9AE20045E15C /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				D666E2CC1D36D7EB0034A92E /* InstrumentationViewController.swift */,
 				D666E2CE1D36D7EB0034A92E /* SimulationViewController.swift */,
 				D666E2D01D36D7EB0034A92E /* Main.storyboard */,
+				D6DF9FE31D3C9AE20045E15C /* GridView.swift */,
 				D6DF9FE11D3BE8CA0045E15C /* Grid.swift */,
 				D666E2DE1D36EB6F0034A92E /* StaticticsViewController.swift */,
 				D666E2D31D36D7EB0034A92E /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 				D666E2CB1D36D7EB0034A92E /* AppDelegate.swift in Sources */,
 				D666E2DF1D36EB6F0034A92E /* StaticticsViewController.swift in Sources */,
 				D6DF9FE21D3BE8CA0045E15C /* Grid.swift in Sources */,
+				D6DF9FE41D3C9AE20045E15C /* GridView.swift in Sources */,
 				D666E2CD1D36D7EB0034A92E /* InstrumentationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

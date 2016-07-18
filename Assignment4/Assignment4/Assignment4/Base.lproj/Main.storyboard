@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Instrumentation-->
@@ -52,8 +54,11 @@
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="SZ5-RS-OJ7" userLabel="ColumnStepper">
                                                 <rect key="frame" x="233" y="255" width="94" height="29"/>
+                                                <connections>
+                                                    <action selector="IncrementC:" destination="9pv-A4-QxB" eventType="valueChanged" id="YST-I5-GJz"/>
+                                                </connections>
                                             </stepper>
-                                            <slider opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lGt-rI-loH" userLabel="RefreshRate">
+                                            <slider opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="lGt-rI-loH" userLabel="RefreshRate">
                                                 <rect key="frame" x="128" y="340" width="304" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="1IJ-Mu-wLu"/>
@@ -86,6 +91,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Pineapple Filled-25" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="Columns" destination="6Uo-XK-hou" id="Nwg-GO-fiO"/>
+                        <outlet property="Rows" destination="dvQ-Xo-5c1" id="Lhs-WZ-Elq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,6 +159,39 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="24N-rX-XU5">
                                 <rect key="frame" x="20" y="20" width="560" height="531"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlW-LM-fiR" userLabel="GridView" customClass="GridView" customModule="Assignment4">
+                                        <rect key="frame" x="68" y="53" width="425" height="425"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vlW-LM-fiR" secondAttribute="height" multiplier="1:1" id="K7M-Ce-EAx"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rows">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="livingColor">
+                                                <color key="value" red="0.0" green="1" blue="0.61201751339999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="bornColor">
+                                                <color key="value" red="0.0" green="1" blue="0.61201751339999999" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="diedColor">
+                                                <color key="value" white="0.33333333333333331" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="gridColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cols">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="gridWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoN-8u-JCm">
                                         <rect key="frame" x="434" y="471" width="96" height="30"/>
                                         <state key="normal" title="Link to Icons8"/>
@@ -157,14 +199,25 @@
                                             <action selector="buttonHit:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="kZw-3r-lY6"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vlW-LM-fiR" userLabel="GridView">
-                                        <rect key="frame" x="152" y="150" width="240" height="128"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG7-bl-ZR2">
+                                        <rect key="frame" x="264" y="478" width="32" height="30"/>
+                                        <state key="normal" title="Step"/>
+                                        <connections>
+                                            <action selector="StepHit:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="OHw-th-eiV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.9727197957" blue="0.22627758819999999" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="vlW-LM-fiR" firstAttribute="centerY" secondItem="24N-rX-XU5" secondAttribute="centerY" id="3Dn-z9-cxv"/>
+                                    <constraint firstItem="vlW-LM-fiR" firstAttribute="height" secondItem="24N-rX-XU5" secondAttribute="height" multiplier="0.8" priority="750" id="Ez2-SV-m7F"/>
+                                    <constraint firstItem="vlW-LM-fiR" firstAttribute="width" relation="lessThanOrEqual" secondItem="24N-rX-XU5" secondAttribute="width" multiplier="0.8" id="UoE-nh-GQp"/>
+                                    <constraint firstItem="vlW-LM-fiR" firstAttribute="width" secondItem="24N-rX-XU5" secondAttribute="width" multiplier="0.8" priority="750" id="cCj-Vz-Xl9"/>
+                                    <constraint firstItem="vlW-LM-fiR" firstAttribute="height" relation="lessThanOrEqual" secondItem="24N-rX-XU5" secondAttribute="height" multiplier="0.8" id="cdA-xa-ciZ"/>
+                                    <constraint firstItem="xG7-bl-ZR2" firstAttribute="centerX" secondItem="24N-rX-XU5" secondAttribute="centerX" id="dYs-b0-0Hc"/>
+                                    <constraint firstItem="xG7-bl-ZR2" firstAttribute="top" secondItem="vlW-LM-fiR" secondAttribute="bottom" id="feG-fL-bvD"/>
                                     <constraint firstAttribute="trailing" secondItem="XoN-8u-JCm" secondAttribute="trailing" constant="30" id="ojw-1z-xQk"/>
+                                    <constraint firstItem="vlW-LM-fiR" firstAttribute="centerX" secondItem="24N-rX-XU5" secondAttribute="centerX" id="vND-Mj-zGf"/>
                                     <constraint firstAttribute="bottom" secondItem="XoN-8u-JCm" secondAttribute="bottom" constant="30" id="wuM-XA-jVb"/>
                                 </constraints>
                             </view>

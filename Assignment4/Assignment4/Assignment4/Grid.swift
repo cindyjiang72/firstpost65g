@@ -10,14 +10,10 @@ import Foundation
 
     enum CellState : String
     {
-        case Living //= "Living"
-    
-        case Empty //= "Empty"
-    
-        case Born //= "Born"
-    
-        case Dead //= "Dead"
-    
+        case Living
+        case Empty
+        case Born
+        case Dead
     }
 
     protocol GridProtocol {
@@ -48,12 +44,12 @@ import Foundation
 
     class Grid : GridProtocol {
         
-        var grid : [[CellState]]
+        var gridarray : [[CellState]]
         
         required init(rows: UInt, cols: UInt) {
             self.rows = rows
             self.cols = cols
-            grid = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
+            gridarray = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
             
         }
         var rows: UInt
@@ -198,12 +194,12 @@ import Foundation
         
         subscript(row: UInt, col: UInt) -> CellState? {
             get {
-                return grid[Int(row)][Int(col)]
+                return gridarray[Int(row)][Int(col)]
             }
             set (newValue) {
                 if newValue == nil { return }
                 if row < 0 || row >= rows || col < 0 || col >= cols { return }
-                grid[Int(row)][Int(col)] = newValue!
+                gridarray[Int(row)][Int(col)] = newValue!
             }
         }
         
@@ -251,14 +247,14 @@ import Foundation
         required init(rows: UInt, cols: UInt) {
             self.rows = rows
             self.cols = cols
-            grid = Grid(rows: rows, cols: cols).grid
+            grid = Grid(rows: rows, cols: cols).gridarray
         }
         
         
 
         
-        func step() -> [[CellState]] {
-            
+        func step() -> [[CellState]]
+        {
             var before = [[Bool]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: Bool()))
             var after = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
             
@@ -361,12 +357,13 @@ import Foundation
                         
                     }
                 }
+            }
             
             return after
         }
 
         
-
+//
 //        @objc func SendNotification() {
 //            NSNotificationCenter.defaultCenter().postNotificationName("EngineNotification", object: nil, userInfo: ["Notification" : grid])
 //        }

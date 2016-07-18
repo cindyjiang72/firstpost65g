@@ -142,6 +142,7 @@ import UIKit
                 let colornew: UIColor = color(grid[r][c])
                 colornew.setFill()
                 path.fill()
+//    setNeedsDisplayInRect(CGRect(x: CGFloat(r)*gridLength, y: CGFloat(c)*gridHeight, width: gridLength, height: gridHeight))
             }
         }
     }

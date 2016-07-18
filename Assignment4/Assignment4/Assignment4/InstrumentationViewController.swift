@@ -8,35 +8,49 @@
 
 import UIKit
 
-class InstrumentationViewController: UIViewController {
+class InstrumentationViewController: UIViewController, EngineDelegate {
+    
+    var engine : EngineProtocol!
+    
+    func engineDidUpdate(withGrid: [[CellState]]) {
+        Rows.text = String(withGrid.count)
+        Columns.text = String(withGrid[0].count)
+    }
+    
     
     //comment on the source of icon
     @IBAction func HitButton(sender: AnyObject) {
-        if let url = NSURL(string: "https://icons8.com") {
+            if let url = NSURL(string: "https://icons8.com") {
             UIApplication.sharedApplication().openURL(url)
-        }
+                        }
     }
     
+    @IBAction func IncrementC(sender: AnyObject) {
+        engine.cols += 10
+        
+    }
+
+    
+    
+    @IBOutlet weak var Rows: UITextField!
+    
+    @IBAction func IncrementR(sender: AnyObject) {
+        engine.rows += 10
+        
+        
+    }
+    
+    @IBOutlet weak var Columns: UITextField!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.gotNotification(_:)), name: "TestName", object: nil)
+        StandardEngine.sharedInstance.rows = 20
+        engine = StandardEngine.sharedInstance
+
 
     }
-    
-    
-    
-    @objc func gotNotification(notification : NSNotification) {
-        if let userInfo = notification.userInfo {
-            print("Did receive notification from \(userInfo["Notification"]) in observer")
-        }
-    }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
