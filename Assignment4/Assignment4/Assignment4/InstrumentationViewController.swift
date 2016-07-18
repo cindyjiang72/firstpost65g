@@ -18,7 +18,6 @@ class InstrumentationViewController: UIViewController{
     }
 
     
-    
     var engine = StandardEngine.sharedInstance
     
     
@@ -48,9 +47,6 @@ class InstrumentationViewController: UIViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
         engine = StandardEngine.sharedInstance
-
-        
-        
 
     }
 
