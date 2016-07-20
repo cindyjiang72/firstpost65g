@@ -18,6 +18,10 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
     
     
+    @IBOutlet weak var gridview: GridView!
+    
+    
+    
     //step() function invoked when button clicked
     @IBAction func StepHit(sender: AnyObject) {
         
@@ -29,10 +33,18 @@ class SimulationViewController: UIViewController, EngineDelegate {
     var engine = StandardEngine.sharedInstance
 
     //override engineDidUpdate because SimulationViewController implements EngineDelegate
-    func engineDidUpdate(withGrid: [[CellState]]) {
-        
+    func engineDidUpdate(withGrid: GridProtocol) {
+        gridview.rows = Int(withGrid.rows)
+        gridview.cols = Int(withGrid.cols)
     }
 
+    
+    
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -45,9 +57,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
             }
     
     
-    @objc func gotNotification(notification : NSNotification) {
-        if let userInfo = notification.userInfo {
-            print("Did receive notification from \(userInfo["Notification"]) in observer")
+        @objc func gotNotification(notification : NSNotification) {
+            if let userInfo = notification.userInfo {
+                print("Did receive notification from \(userInfo["Notification"]) in observer")
         }
     }
     

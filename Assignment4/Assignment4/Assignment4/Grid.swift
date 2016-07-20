@@ -28,20 +28,20 @@ import Foundation
 
     //EngineDelegate Protocol
     protocol EngineDelegate {
-        func engineDidUpdate(withGrid: [[CellState]])
+        func engineDidUpdate(withGrid: GridProtocol)
     
     }
 
     //EngineProtocol
     protocol EngineProtocol {
         var delegate : EngineDelegate? { get set }
-        var grid : [[CellState]] { get }
+        var grid : GridProtocol { get }
         var refreshRate : Double { get set }
         var refreshTimer : NSTimer? { get set }
         var rows: UInt { get set }
         var cols: UInt { get set }
         init(rows: UInt, cols: UInt)
-        func step() -> [[CellState]]
+        func step() -> GridProtocol
     }
 
 
@@ -49,12 +49,12 @@ import Foundation
     //class Grid implements GridProtocol
     class Grid : GridProtocol {
         
-        var gridarray : [[CellState]]
+        var gridgrid : [[CellState]]
         
         required init(rows: UInt, cols: UInt) {
             self.rows = rows
             self.cols = cols
-            gridarray = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
+            gridgrid = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
             
         }
         var rows: UInt
@@ -199,12 +199,12 @@ import Foundation
         
         subscript(row: UInt, col: UInt) -> CellState? {
             get {
-                return gridarray[Int(row)][Int(col)]
+                return gridgrid[Int(row)][Int(col)]
             }
             set (newValue) {
                 if newValue == nil { return }
                 if row < 0 || row >= rows || col < 0 || col >= cols { return }
-                gridarray[Int(row)][Int(col)] = newValue!
+                gridgrid[Int(row)][Int(col)] = newValue!
             }
         }
 
@@ -215,7 +215,7 @@ import Foundation
     class StandardEngine : EngineProtocol {
     
         var delegate : EngineDelegate?
-        var grid : [[CellState]]
+        var grid : GridProtocol
         var refreshRate = 0.0 //variables are unable to default in the protocol so set in class Standard Engine
         var refreshTimer : NSTimer?
         
@@ -249,25 +249,28 @@ import Foundation
         required init(rows: UInt, cols: UInt) {
             self.rows = rows
             self.cols = cols
-            grid = Grid(rows: rows, cols: cols).gridarray
+            grid = Grid(rows: rows, cols: cols)
         }
         
         
 
         
-        func step() -> [[CellState]]
+        func step() -> GridProtocol
         {
             var before = [[Bool]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: Bool()))
             var after = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
+            
+            
+            var before: GridProtocol = Grid()
             
             for r in 0...Int(rows-1)
             {
                 for c in 0...Int(cols-1)
                 {
-                    if grid[r][c] == .Living {
+                    if grid[r,c] == .Living {
                         before[r][c] = true
                     }
-                    if grid[r][c] == .Born {
+                    if grid[r,c] == .Born {
                         before[r][c] = true
                     }
                     if grid[r][c] == .Empty {
