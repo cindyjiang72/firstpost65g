@@ -257,11 +257,11 @@ import Foundation
         
         func step() -> GridProtocol
         {
-            var before = [[Bool]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: Bool()))
+            //var before = [[Bool]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: Bool()))
             var after = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
             
             
-            var before: GridProtocol = Grid()
+            //var before: GridProtocol = Grid(rows: rows, cols: cols)
             
             for r in 0...Int(rows-1)
             {

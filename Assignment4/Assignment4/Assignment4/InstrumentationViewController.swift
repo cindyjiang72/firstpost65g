@@ -13,12 +13,11 @@ class InstrumentationViewController: UIViewController{
     //comment on the source of icon
     @IBAction func HitButton(sender: AnyObject) {
             if let url = NSURL(string: "https://icons8.com") {
-            UIApplication.sharedApplication().openURL(url)
-                        }
+            UIApplication.sharedApplication().openURL(url)}
     }
 
-    
     var engine = StandardEngine.sharedInstance
+    
     
     
     @IBOutlet weak var Rows: UITextField!
@@ -37,19 +36,16 @@ class InstrumentationViewController: UIViewController{
     @IBAction func IncrementC(sender: AnyObject) {
         engine.cols += 10
         Columns.text = engine.cols.description
-        
     }
-    
-    //var standardengine : StandardEngine!
 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        engine = StandardEngine.sharedInstance
-
     }
-
+    
     
     
     override func didReceiveMemoryWarning() {

@@ -14,14 +14,10 @@ import UIKit
     
     enum CellState : String
     {
-        case Living //= "Living"
-        
-        case Empty //= "Empty"
-        
-        case Born //= "Born"
-        
-        case Dead //= "Dead"
-        
+        case Living
+        case Empty
+        case Born
+        case Dead
     }
     
     
@@ -66,14 +62,14 @@ import UIKit
     @IBInspectable var rows: Int = 20{
         didSet{
             grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
-            
+            setNeedsDisplay()
         }
         
     }
     @IBInspectable var cols: Int = 20{
         didSet{
             grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
-            
+            setNeedsDisplay()
         }
     }
 
@@ -106,14 +102,20 @@ import UIKit
     
     override func drawRect(rect: CGRect) {
         
+        print("rows:\(rows) cols:\(cols)")
+        
         let width: CGFloat = self.bounds.width
         let height: CGFloat = self.bounds.height
+        
+        print("bounds: \(bounds)")
+        print ("width: \(width) height: \(height)")
         
         let plusPath = UIBezierPath()
         
         let gridLength:CGFloat = width/CGFloat(cols)
         let gridHeight:CGFloat = height/CGFloat(rows)
-        
+        print ("grid width: \(gridLength) height: \(gridHeight)")
+
         for i in 0...rows{
             
             plusPath.moveToPoint(CGPoint(x:0.0,y:CGFloat(i)*gridHeight))
@@ -136,9 +138,10 @@ import UIKit
         
 
         
-        for r in 0...rows-1 {
-            for c in 0...cols-1 {
-                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(r)*gridLength,CGFloat(c)*gridHeight,gridLength,gridHeight))
+        for r in 0..<rows {
+            for c in 0..<cols {
+                print("drawing cell x: \(r) y: \(c)")
+                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(c)*gridLength,CGFloat(r)*gridHeight,gridLength,gridHeight))
                 let colornew: UIColor = color(grid[r][c])
                 colornew.setFill()
                 path.fill()

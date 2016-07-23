@@ -50,6 +50,8 @@ func countLiving(grid:[Cell]) -> Int {
         return $1.alive ? $0 + 1 : $0 //$1 is the value of the array, $0 is the accumulator
     }
 }
+grid
+
 //mapping reduce big thing in bonus
 //assignment5 one-line/ three-line func code
 
@@ -59,6 +61,8 @@ func countLivingNeighbors(grid:[Cell], cell:Cell) -> Int {
     return neighbors((cell.position.row, cell.position.col))
     .reduce(0) { grid[$1.row*cols + $1.col].alive ? $0 + 1 : $0 }
 }
+
+
 //first argument is always accumulator/ countere
 
 //what about the false cases?
