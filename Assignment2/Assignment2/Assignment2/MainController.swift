@@ -47,7 +47,6 @@ class Problem2ViewController: UIViewController {
             }
         }
         
-        ShowText.text = "The number of alive cells before is: \(beforeAlive)"
         
         var final = step2(before)
 

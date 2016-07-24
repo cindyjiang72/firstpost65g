@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var gridview: GridView!
     @IBAction func hitButton(sender: AnyObject) {
-        gridview.runButton()
+        gridview.step2()
         
         
     

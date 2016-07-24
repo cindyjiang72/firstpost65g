@@ -11,7 +11,6 @@ import UIKit
 
 @IBDesignable class GridView: UIView {
     
-    
     enum CellState : String
     {
         case Living
@@ -19,23 +18,16 @@ import UIKit
         case Born
         case Dead
     }
+
     
-    
-    func description(value: CellState) -> CellState
-    {
-        switch value
-        {
-        case .Living:
-            return .Living
-        case .Empty:
-            return .Empty
-        case .Born:
-            return .Born
-        case .Dead:
-            return .Dead
+    func Description() -> String {
+        switch self {
+        default:
+            return self.description
         }
     }
     
+
     func allValues(value: CellState) -> [CellState]
     {
         return [.Living, .Empty, .Born, .Dead]
@@ -102,19 +94,14 @@ import UIKit
     
     override func drawRect(rect: CGRect) {
         
-        print("rows:\(rows) cols:\(cols)")
         
         let width: CGFloat = self.bounds.width
         let height: CGFloat = self.bounds.height
-        
-        print("bounds: \(bounds)")
-        print ("width: \(width) height: \(height)")
-        
+
         let plusPath = UIBezierPath()
         
         let gridLength:CGFloat = width/CGFloat(cols)
         let gridHeight:CGFloat = height/CGFloat(rows)
-        print ("grid width: \(gridLength) height: \(gridHeight)")
 
         for i in 0...rows{
             
@@ -140,12 +127,12 @@ import UIKit
         
         for r in 0..<rows {
             for c in 0..<cols {
-                print("drawing cell x: \(r) y: \(c)")
                 let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(c)*gridLength,CGFloat(r)*gridHeight,gridLength,gridHeight))
                 let colornew: UIColor = color(grid[r][c])
                 colornew.setFill()
                 path.fill()
-//    setNeedsDisplayInRect(CGRect(x: CGFloat(r)*gridLength, y: CGFloat(c)*gridHeight, width: gridLength, height: gridHeight))
+                
+                setNeedsDisplayInRect(CGRect(x: CGFloat(c)*gridLength, y: CGFloat(r)*gridHeight, width: gridLength, height: gridHeight))
             }
         }
     }
@@ -163,7 +150,7 @@ import UIKit
         let x = Int((value.x)/gridLength)
         let y = Int((value.y)/gridHeight)
         
-        return grid[x][y]
+        return grid[y][x]
         
     }
     
@@ -182,7 +169,7 @@ import UIKit
             let y = Int((touch.locationInView(self).y)/gridHeight)
             
             let before = getPointState(touch.locationInView(self))
-            grid[x][y] = toggle(before)
+            grid[y][x] = toggle(before)
             
             
             
@@ -191,63 +178,60 @@ import UIKit
 
     }
     
-    
-    
-    
-    
-    
+
     
     
     func neighbors(coor:(Int, Int))->[(Int, Int)]
     {
         var f = [(Int, Int)]()
         let r = rows-1
+        print(r)
         let c = cols-1
         
-        if coor.0+1<=c
+        if coor.0+1<=r
         {
             f.append((coor.0+1, coor.1))
         }
         else
         {
-            f.append((coor.0-c, coor.1))
+            f.append((coor.0-r, coor.1))
         }//+o
         
         
         
         
-        if coor.1+1<=r
+        if coor.1+1<=c
         {
             f.append((coor.0, coor.1+1))
         }
         else
         {
-            f.append((coor.0, coor.1-r))
+            f.append((coor.0, coor.1-c))
             
         }//o+
         
         
         
-        if coor.0+1<=c
+        if coor.0+1<=r
         {
-            if coor.1+1<=r
+            if coor.1+1<=c
             {
                 f.append((coor.0+1, coor.1+1))
             }
             else
             {
-                f.append((coor.0+1, coor.1-r))
+                f.append((coor.0+1, coor.1-c))
             }
         }
         else
         {
-            if coor.1+1<=r
+            if coor.1+1<=c
             {
-                f.append((coor.0-c, coor.1+1))
+                f.append((coor.0-r, coor.1+1))
             }
             else
             {
-                f.append((coor.0-c, coor.1-r))
+                f.append((coor.0-r, coor.1-c))
             }
         }//++
         
@@ -256,13 +240,13 @@ import UIKit
             
             f.append((coor.0-1, coor.1))//-o
             
-            if coor.1+1<=r
+            if coor.1+1<=c
             {
                 f.append((coor.0-1, coor.1+1))
             }
             else
             {
-                f.append((coor.0-1, coor.1-r))
+                f.append((coor.0-1, coor.1-c))
             }//-+
             
             
@@ -272,29 +256,29 @@ import UIKit
             }
             else
             {
-                f.append((coor.0-1, coor.1+r))
+                f.append((coor.0-1, coor.1+c))
             }//--
         }
         else //coor.0-1<0
         {
-            f.append((coor.0+c, coor.1))//-o
+            f.append((coor.0+r, coor.1))//-o
             
-            if coor.1+1<=r
+            if coor.1+1<=c
             {
-                f.append((coor.0+c, coor.1+1))
+                f.append((coor.0+r, coor.1+1))
             }
             else
             {
-                f.append((coor.0+c, coor.1-r))
+                f.append((coor.0+r, coor.1-c))
             }//-+
             
             if coor.1-1>=0
             {
-                f.append((coor.0+c, coor.1-1))
+                f.append((coor.0+r, coor.1-1))
             }
             else
             {
-                f.append((coor.0+c, coor.1+r))
+                f.append((coor.0+r, coor.1+c))
             }//--
         }
         
@@ -304,27 +288,27 @@ import UIKit
             
             f.append((coor.0, coor.1-1))//0-
             
-            if coor.0+1<=c
+            if coor.0+1<=r
             {
                 f.append((coor.0+1, coor.1-1))
             }
             else
             {
-                f.append((coor.0-c, coor.1-1))
+                f.append((coor.0-r, coor.1-1))
             }//+-
             
         }
         else //Ro-1<0
         {
-            f.append((coor.0, coor.1+r))//0-
+            f.append((coor.0, coor.1+c))//0-
             
-            if coor.0+1<=c
+            if coor.0+1<=r
             {
-                f.append((coor.0+1, coor.1+r))
+                f.append((coor.0+1, coor.1+c))
             }
             else
             {
-                f.append((coor.0-c, coor.1+r))
+                f.append((coor.0-r, coor.1+c))
             }//+-
             
         }
@@ -333,89 +317,27 @@ import UIKit
         
     }
     
-    
-    func step2(before:[[Bool]])->[[Bool]]
-    {
-        let numrow = before.count
-        let numcol = before[0].count
-        var after = [[Bool]](count:numrow, repeatedValue: Array(count:numcol, repeatedValue:Bool()))
-        
-        let width: CGFloat = self.bounds.width
-        let height: CGFloat = self.bounds.height
-        let gridLength:CGFloat = width/CGFloat(cols)
-        let gridHeight:CGFloat = height/CGFloat(rows)
 
+
+    func step2() -> [[CellState]]
+    {
+        
+        var after = [[CellState]](count:rows, repeatedValue: Array(count:cols, repeatedValue:.Empty))
         
         
-        for Ro in 0...numrow-1
+        for Ro in 0...rows-1
         {
-            for Co in 0...numcol-1
+            for Co in 0...cols-1
             {
-                switch before[Ro][Co]{
+                switch grid[Ro][Co]{
                     
-                case true:
+                case .Empty, .Dead:
                     var afterAlive = 0
                     var final = neighbors((Ro,Co))
                     
                     for i in 0...7
                     {
-                        if before[final[i].0][final[i].1] == true
-                        {
-                            afterAlive += 1
-                        }
-                    }
-                    
-                    
-                    if afterAlive == 2
-                    {
-                        after[Ro][Co] = true
-                        
-                    }
-                    else
-                    {
-                        if afterAlive == 3
-                        {
-                            after[Ro][Co] = true
-                        }
-                        else {
-                            after[Ro][Co] = false
-                        }
-                    }
-                        
-                        
-                        if grid[Ro][Co] == .Born {
-                            if after[Ro][Co] == true {
-                                grid[Ro][Co] = .Living
-                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                            }
-                            else {
-                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                                grid[Ro][Co] = .Dead
-                                
-                            }
-                        }
-                        
-                        
-                       if grid[Ro][Co] == .Living {
-                            if after[Ro][Co] == true {
-                                grid[Ro][Co] = .Living
-                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                            }
-                            else {
-                                grid[Ro][Co] = .Dead
-                                setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                            }
-                        }
-                        
-                        
-                
-                
-                case false:
-                    var afterAlive = 0
-                    var final = neighbors((Ro,Co))
-                    for i in 0...7
-                    {
-                        if before[final[i].0][final[i].1] == true
+                        if grid[final[i].0][final[i].1] == .Living || grid[final[i].0][final[i].1] == .Born
                         {
                             afterAlive += 1
                         }
@@ -423,93 +345,46 @@ import UIKit
                     
                     if afterAlive == 3
                     {
-                        after[Ro][Co] = true
-                    }
-                    else
-                    {
-                        after[Ro][Co] = false
-                    }
-                    
-                    
-                    if grid[Ro][Co] == .Dead {
-                        if after[Ro][Co] == true {
-                            grid[Ro][Co] = .Born
-                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                        }
-                        else {
-                            grid[Ro][Co] = .Empty
-                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                        }
-                    }
-                    
-                    
-                    if grid[Ro][Co] == .Empty {
-                        if after[Ro][Co] == true {
-                            grid[Ro][Co] = .Born
-                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                        }
-                        else {
-                            grid[Ro][Co] = .Empty
-                            setNeedsDisplayInRect(CGRect(x: CGFloat(Ro)*gridLength, y: CGFloat(Co)*gridHeight, width: gridLength, height: gridHeight))
-                        }
-                    }
-                    
-                    
-                }
-            }
-        }
-        
-        
-        return after
-        
-    }
-    
-
-
-
-    
-    func runButton() {
-        
-        var newBool = [[Bool]](count:rows, repeatedValue: Array(count:cols, repeatedValue:Bool()))
-
-        for r in 1...rows {
-            for c in 1...cols {
-                if grid[r-1][c-1] == .Empty {
-                
-                    newBool[r-1][c-1] = false
-                }
-                else
-                {
-                    if grid[r-1][c-1] == .Dead {
-                    newBool[r-1][c-1] = false
-                    }
-                    else
-                    {
-                        if grid[r-1][c-1] == .Living {
-                            newBool[r-1][c-1] = true
-                        }
-                        else {
-                            if grid[r-1][c-1] == .Born {
-                                newBool[r-1][c-1] = true}
-                        }
+                        after[Ro][Co] = .Born
                         
                     }
+                    else {
+                        after[Ro][Co] = .Empty
+                    }
+                    
+                case .Living, .Born:
+                    var afterAlive = 0
+                    var final = neighbors((Ro,Co))
+                    
+                    for i in 0...7
+                    {
+                        if grid[final[i].0][final[i].1] == .Living || grid[final[i].0][final[i].1] == .Born
+                        {
+                            afterAlive += 1
+                        }
+                    }
+                    
+                    if afterAlive == 2 || afterAlive == 3
+                    {
+                        after[Ro][Co] = .Living
+                        
+                    }
+                    else {
+                        after[Ro][Co] = .Dead
+                    }
                 
-                
-                
+                }
             }
-        }
-        
-        var afterBool = step2(newBool)
-        
+            
 
         
         }
-
-    
-
-    
+        grid = after
+        setNeedsDisplay()
+        return grid
     }
-}
+    
+    
 
+}
     

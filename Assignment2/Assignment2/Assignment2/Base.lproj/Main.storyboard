@@ -82,10 +82,9 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CV6-xC-PgM">
-                                        <rect key="frame" x="160" y="303" width="240" height="128"/>
+                                        <rect key="frame" x="160" y="313" width="240" height="203"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="2s2-3L-z9p"/>
                                             <constraint firstAttribute="width" constant="240" id="DzK-hL-0EA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -96,7 +95,8 @@
                                 <constraints>
                                     <constraint firstItem="rLh-p9-DTS" firstAttribute="centerY" secondItem="uiQ-NB-heq" secondAttribute="centerY" id="4JT-6t-ObB"/>
                                     <constraint firstItem="CV6-xC-PgM" firstAttribute="centerX" secondItem="uiQ-NB-heq" secondAttribute="centerX" id="Mpd-QM-Ptm"/>
-                                    <constraint firstItem="CV6-xC-PgM" firstAttribute="top" secondItem="rLh-p9-DTS" secondAttribute="bottom" constant="20" id="VW7-Ph-5lm"/>
+                                    <constraint firstItem="CV6-xC-PgM" firstAttribute="top" secondItem="rLh-p9-DTS" secondAttribute="bottom" constant="30" id="VW7-Ph-5lm"/>
+                                    <constraint firstAttribute="bottom" secondItem="CV6-xC-PgM" secondAttribute="bottom" constant="20" id="Y5x-Lj-w3x"/>
                                     <constraint firstItem="rLh-p9-DTS" firstAttribute="centerX" secondItem="uiQ-NB-heq" secondAttribute="centerX" id="nsT-sI-VUF"/>
                                 </constraints>
                             </view>
@@ -140,11 +140,10 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8kB-Ia-s9u">
-                                        <rect key="frame" x="160" y="315" width="240" height="128"/>
+                                        <rect key="frame" x="160" y="313" width="240" height="203"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="7Oq-NG-IzL"/>
-                                            <constraint firstAttribute="height" constant="128" id="9sH-VK-AmB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -152,10 +151,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.12217444450000001" green="0.93475602579999995" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="8kB-Ia-s9u" firstAttribute="top" secondItem="08c-i0-OMp" secondAttribute="bottom" constant="32" id="IuO-Cn-NFQ"/>
+                                    <constraint firstItem="8kB-Ia-s9u" firstAttribute="top" secondItem="08c-i0-OMp" secondAttribute="bottom" constant="30" id="IuO-Cn-NFQ"/>
                                     <constraint firstItem="8kB-Ia-s9u" firstAttribute="centerX" secondItem="COC-TX-oeJ" secondAttribute="centerX" id="N46-Ye-nHT"/>
                                     <constraint firstItem="08c-i0-OMp" firstAttribute="centerY" secondItem="COC-TX-oeJ" secondAttribute="centerY" id="ewE-RN-aHt"/>
                                     <constraint firstItem="08c-i0-OMp" firstAttribute="centerX" secondItem="COC-TX-oeJ" secondAttribute="centerX" id="oBL-qh-it8"/>
+                                    <constraint firstAttribute="bottom" secondItem="8kB-Ia-s9u" secondAttribute="bottom" constant="20" id="tcV-mI-PDp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -198,11 +198,10 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4m7-LW-CIx">
-                                        <rect key="frame" x="160" y="313" width="240" height="128"/>
+                                        <rect key="frame" x="160" y="313" width="240" height="203"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="Onm-Tl-4uY"/>
-                                            <constraint firstAttribute="height" constant="128" id="Ps4-jf-5xS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -211,6 +210,7 @@
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.61201751339999999" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="4m7-LW-CIx" firstAttribute="top" secondItem="PEE-Fa-HCe" secondAttribute="bottom" constant="30" id="52e-Mk-6my"/>
+                                    <constraint firstAttribute="bottom" secondItem="4m7-LW-CIx" secondAttribute="bottom" constant="20" id="Axt-Kt-C6j"/>
                                     <constraint firstItem="PEE-Fa-HCe" firstAttribute="centerX" secondItem="ffx-dP-NBZ" secondAttribute="centerX" id="E8p-VK-lEa"/>
                                     <constraint firstItem="4m7-LW-CIx" firstAttribute="centerX" secondItem="ffx-dP-NBZ" secondAttribute="centerX" id="Hg7-bn-F11"/>
                                     <constraint firstItem="PEE-Fa-HCe" firstAttribute="centerY" secondItem="ffx-dP-NBZ" secondAttribute="centerY" id="eR6-PN-Y9f"/>
