@@ -9,8 +9,8 @@ func isLeap(year: Int) -> Bool {
 
 
 
-let regular = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-let leap = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+let regular = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30]
+let leap = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30]
 
 func julianDate(year:Int, month: Int, day: Int) -> Int {
 
