@@ -241,12 +241,8 @@ import Foundation
         @objc func timerDidFire(timer:NSTimer) {
             //step()
             self.rows += 1
-            let center = NSNotificationCenter.defaultCenter()
-            let n = NSNotification(name: "SENotification",
-                                   object: nil,
-                                   userInfo: nil)
-            center.postNotification(n)
-            //print ("\(timer.userInfo?["name"] ?? "not fred")")
+            let date = NSDate()
+            print ("\(date)")
         }
         
         

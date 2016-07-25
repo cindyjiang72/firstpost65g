@@ -34,20 +34,37 @@ class InstrumentationViewController: UIViewController{
 //        }
         print(refreshRate)
         engine.refreshRate = Double(refreshRate.value)
-        Rows.text = engine.rows.description
         
     }
     
     
     
-    
-    
-    
+    @IBAction func refreshSwitch(uiSwitch: UISwitch) {
+        
+        if uiSwitch.on {
+            engine.refreshTimer?.invalidate()
+            let sel = #selector(StandardEngine.timerDidFire(_:))
+            engine.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1/engine.refreshRate,
+                                                                         target: self,
+                                                                         selector: sel,
+                                                                         userInfo: nil,
+                                                                         repeats: true)
+        
+        
+        func timerDidFire(timer:NSTimer) {
+            //step()
+            engine.rows += 1
+        }
+            
+        }
+        else {
+            engine.refreshTimer?.invalidate()
+        }
+    }
+
+
+
     @IBOutlet weak var Rows: UITextField!
-//    {
-//        Rows.text = engine.rows.description
-//    }
-        //self.Rows.text = engine.rows.description
     
     
     //UISTepper increments rows by 10 when clicked
@@ -70,30 +87,9 @@ class InstrumentationViewController: UIViewController{
 
 
     
-    @IBAction func refreshSwitch(sender: AnyObject) {
-        if engine.refreshRate != 0  {
-            engine.refreshTimer?.invalidate()
-        }
-        else {
-            let sel = #selector(StandardEngine.timerDidFire(_:))
-            engine.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1/engine.refreshRate,
-                                                                         target: self,
-                                                                         selector: sel,
-                                                                         userInfo: nil,
-                                                                         repeats: true)
-        }
-        
-        func timerDidFire(timer:NSTimer) {
-            //step()
-            engine.rows += 1
-            let center = NSNotificationCenter.defaultCenter()
-            let n = NSNotification(name: "SENotification",
-                                   object: nil,
-                                   userInfo: nil)
-            center.postNotification(n)
-            //print ("\(timer.userInfo?["name"] ?? "not fred")")
-        }
-    }
+    
+    
+    
     
     
     @IBAction func RowsEntered(sender: AnyObject) {
