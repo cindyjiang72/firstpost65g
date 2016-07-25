@@ -36,6 +36,7 @@ func toggle(value:CellState) -> CellState
 
     @IBInspectable var rows: Int = 20{
         didSet{
+            //rows = StandardEngine.rows
             grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
             
         }
@@ -43,6 +44,7 @@ func toggle(value:CellState) -> CellState
     }
     @IBInspectable var cols: Int = 20{
         didSet{
+            
             grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
             
         }

@@ -16,6 +16,8 @@ class InstrumentationViewController: UIViewController{
             UIApplication.sharedApplication().openURL(url)}
     }
 
+    
+    
     var engine = StandardEngine.sharedInstance
     
     @IBOutlet weak var refreshRate: UISlider!
@@ -42,6 +44,9 @@ class InstrumentationViewController: UIViewController{
     
     
     @IBOutlet weak var Rows: UITextField!
+//    {
+//        Rows.text = engine.rows.description
+//    }
         //self.Rows.text = engine.rows.description
     
     
@@ -50,6 +55,8 @@ class InstrumentationViewController: UIViewController{
         engine.rows += 10
         Rows.text = engine.rows.description
     }
+    
+    
     
     
     
@@ -63,17 +70,50 @@ class InstrumentationViewController: UIViewController{
 
 
     
+    @IBAction func refreshSwitch(sender: AnyObject) {
+        if engine.refreshRate != 0  {
+            engine.refreshTimer?.invalidate()
+        }
+        else {
+            let sel = #selector(StandardEngine.timerDidFire(_:))
+            engine.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1/engine.refreshRate,
+                                                                         target: self,
+                                                                         selector: sel,
+                                                                         userInfo: nil,
+                                                                         repeats: true)
+        }
+        
+        func timerDidFire(timer:NSTimer) {
+            //step()
+            engine.rows += 1
+            let center = NSNotificationCenter.defaultCenter()
+            let n = NSNotification(name: "SENotification",
+                                   object: nil,
+                                   userInfo: nil)
+            center.postNotification(n)
+            //print ("\(timer.userInfo?["name"] ?? "not fred")")
+        }
+    }
+    
+    
+    @IBAction func RowsEntered(sender: AnyObject) {
+        engine.rows = UInt(Rows.text!)!
+    }
+    
+    @IBAction func ColsEntered(sender: AnyObject) {
+        engine.cols = UInt(Columns.text!)!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+
     }
     
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     
