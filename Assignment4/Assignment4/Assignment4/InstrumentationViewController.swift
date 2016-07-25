@@ -18,9 +18,32 @@ class InstrumentationViewController: UIViewController{
 
     var engine = StandardEngine.sharedInstance
     
+    @IBOutlet weak var refreshRate: UISlider!
+    
+    
+    
+    @IBAction func changeSlider(sender: UISlider!) {
+//        if let text = sender.text,
+//            interval = Double(text)  {
+//            example.refreshInterval = interval
+//        }
+//        else  {
+//            example.refreshInterval = 0
+//        }
+        print(refreshRate)
+        engine.refreshRate = Double(refreshRate.value)
+        Rows.text = engine.rows.description
+        
+    }
+    
+    
+    
+    
     
     
     @IBOutlet weak var Rows: UITextField!
+        //self.Rows.text = engine.rows.description
+    
     
     //UISTepper increments rows by 10 when clicked
     @IBAction func IncrementRows(sender: AnyObject) {

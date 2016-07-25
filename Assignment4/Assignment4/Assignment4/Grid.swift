@@ -216,8 +216,39 @@ import Foundation
     
         var delegate : EngineDelegate?
         var grid : GridProtocol
-        var refreshRate = 0.0 //variables are unable to default in the protocol so set in class Standard Engine
-        var refreshTimer : NSTimer?
+        //variables are unable to default in the protocol so set in class Standard Engine
+        var refreshRate = 0.0 {
+            didSet {
+                if refreshRate != 0 {
+                    if let timer = refreshTimer { timer.invalidate() }
+                    let sel = #selector(StandardEngine.timerDidFire(_:))
+                    refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1/refreshRate,
+                                                                   target: self,
+                                                                   selector: sel,
+                                                                   userInfo: nil,
+                                                                   repeats: true)
+                }
+                else if let timer = refreshTimer {
+                    timer.invalidate()
+                    self.refreshTimer = nil
+                }
+            }
+
+        }
+        var refreshTimer: NSTimer?
+        
+        
+        @objc func timerDidFire(timer:NSTimer) {
+            //step()
+            self.rows += 1
+            let center = NSNotificationCenter.defaultCenter()
+            let n = NSNotification(name: "SENotification",
+                                   object: nil,
+                                   userInfo: nil)
+            center.postNotification(n)
+            //print ("\(timer.userInfo?["name"] ?? "not fred")")
+        }
+        
         
         
         private static var _sharedInstance = StandardEngine(rows: 10, cols: 10)
@@ -252,117 +283,68 @@ import Foundation
             grid = Grid(rows: rows, cols: cols)
         }
         
-        
 
         
         func step() -> GridProtocol
         {
-            //var before = [[Bool]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: Bool()))
-            var after = [[CellState]](count: Int(rows), repeatedValue: Array(count:Int(cols), repeatedValue: .Empty))
+            //grid = Grid(rows: rows, cols: cols)
+            let after = Grid(rows:rows, cols: cols)
             
-            
-            //var before: GridProtocol = Grid(rows: rows, cols: cols)
-            
-            for r in 0...Int(rows-1)
-            {
-                for c in 0...Int(cols-1)
-                {
-                    if grid[r,c] == .Living {
-                        before[r][c] = true
-                    }
-                    if grid[r,c] == .Born {
-                        before[r][c] = true
-                    }
-                    if grid[r][c] == .Empty {
-                        before[r][c] = true
-                    }
-                    if grid[r][c] == .Dead {
-                        before[r][c] = true
-                    }
-                }
-            }
-            
-            for r in 0...Int(rows-1)
-            {
-                for c in 0...Int(cols-1)
-                {
-                    switch grid[r][c] {
-                    case .Living:
-                        var afterAlive = 0
-                        var final = Grid(rows: rows, cols: cols).neighbors((r,c))
-                        
-                        for i in 0...7 {
-                            if before[final[i].0][final[i].1] == true
-                            {
-                                afterAlive += 1
-                            }
-                        }
-                        
-                        if afterAlive == 2 || afterAlive == 3
-                        {
-                            after[r][c] = .Living}
-                        else {
-                                after[r][c] = .Dead
-                            }
-                        
-                    case .Born:
-                        var afterAlive = 0
-                        var final = Grid(rows: rows, cols: cols).neighbors((r,c))
-                        
-                        for i in 0...7 {
-                            if before[final[i].0][final[i].1] == true
-                            {
-                                afterAlive += 1
-                            }
-                        }
-                        
-                        if afterAlive == 2 || afterAlive == 3
-                        {
-                            after[r][c] = .Living}
-                        else {
-                            after[r][c] = .Dead
-                        }
+//            for Ro in 0...rows-1
+//            {
+//                for Co in 0...cols-1
+//                {
+//                    switch grid.subscript(Ro,Co){
+//                        
+//                    case .Empty, .Dead:
+//                        var afterAlive = 0
+//                        var final = self.grid.neighbors((Int(Ro),Int(Co)))
+//                        
+//                        for i in 0...7
+//                        {
+//                            if grid[final[i].0][final[i].1] == .Living || grid[final[i].0][final[i].1] == .Born
+//                            {
+//                                afterAlive += 1
+//                            }
+//                        }
+//                        
+//                        if afterAlive == 3
+//                        {
+//                            after[Ro][Co] = .Born
+//                            
+//                        }
+//                        else {
+//                            after[Ro][Co] = .Empty
+//                        }
+//                        
+//                    case .Living, .Born:
+//                        var afterAlive = 0
+//                        var final = neighbors((Ro,Co))
+//                        
+//                        for i in 0...7
+//                        {
+//                            if grid[final[i].0][final[i].1] == .Living || grid[final[i].0][final[i].1] == .Born
+//                            {
+//                                afterAlive += 1
+//                            }
+//                        }
+//                        
+//                        if afterAlive == 2 || afterAlive == 3
+//                        {
+//                            after[Ro][Co] = .Living
+//                            
+//                        }
+//                        else {
+//                            after[Ro][Co] = .Dead
+//                        }
+//                        
+//                    }
+//                }
+//                
+//                
+//                
+//            }
 
-                    case .Empty:
-                        var afterAlive = 0
-                        var final = Grid(rows: rows, cols: cols).neighbors((r,c))
-                        
-                        for i in 0...7 {
-                            if before[final[i].0][final[i].1] == true
-                            {
-                                afterAlive += 1
-                            }
-                        }
-                        
-                        if afterAlive == 3
-                        {
-                            after[r][c] = .Born}
-                        else {
-                            after[r][c] = .Empty
-                        }
-
-                        
-                    case .Dead:
-                        var afterAlive = 0
-                        var final = Grid(rows: rows, cols: cols).neighbors((r,c))
-                        
-                        for i in 0...7 {
-                            if before[final[i].0][final[i].1] == true
-                            {
-                                afterAlive += 1
-                            }
-                        }
-                        
-                        if afterAlive == 3
-                        {
-                            after[r][c] = .Born}
-                        else {
-                            after[r][c] = .Empty
-                        }
-                        
-                    }
-                }
-            }
             
             return after
         }

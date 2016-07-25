@@ -185,7 +185,7 @@ import UIKit
     {
         var f = [(Int, Int)]()
         let r = rows-1
-        print(r)
+        //print(r)
         let c = cols-1
         
         if coor.0+1<=r

@@ -33,17 +33,14 @@ func toggle(value:CellState) -> CellState
     
     var engine = StandardEngine.sharedInstance
     
-    //var rows = 10
-    
-    @IBInspectable var rows = 10
-    
-//    @IBInspectable var rows: Int = 20{
-//        didSet{
-//            grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
-//            
-//        }
-//        
-//    }
+
+    @IBInspectable var rows: Int = 20{
+        didSet{
+            grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
+            
+        }
+        
+    }
     @IBInspectable var cols: Int = 20{
         didSet{
             grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
@@ -78,7 +75,9 @@ func toggle(value:CellState) -> CellState
     
     @IBInspectable var gridWidth: CGFloat = 2.0
     
+    
     override func drawRect(rect: CGRect) {
+        
         
         let width: CGFloat = self.bounds.width
         let height: CGFloat = self.bounds.height
@@ -110,12 +109,14 @@ func toggle(value:CellState) -> CellState
         
         
         
-        for r in 0...rows-1 {
-            for c in 0...cols-1 {
-                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(r)*gridLength,CGFloat(c)*gridHeight,gridLength,gridHeight))
+        for r in 0..<rows {
+            for c in 0..<cols {
+                let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(c)*gridLength,CGFloat(r)*gridHeight,gridLength,gridHeight))
                 let colornew: UIColor = color(grid[r][c])
                 colornew.setFill()
                 path.fill()
+                
+                setNeedsDisplayInRect(CGRect(x: CGFloat(c)*gridLength, y: CGFloat(r)*gridHeight, width: gridLength, height: gridHeight))
             }
         }
     }
@@ -133,7 +134,7 @@ func toggle(value:CellState) -> CellState
         let x = Int((value.x)/gridLength)
         let y = Int((value.y)/gridHeight)
         
-        return grid[x][y]
+        return grid[y][x]
         
     }
     
@@ -152,7 +153,7 @@ func toggle(value:CellState) -> CellState
             let y = Int((touch.locationInView(self).y)/gridHeight)
             
             let before = getPointState(touch.locationInView(self))
-            grid[x][y] = toggle(before)
+            grid[y][x] = toggle(before)
             
             
             
