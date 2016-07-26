@@ -19,28 +19,24 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBOutlet weak var gridview: GridView!
     
-    
-    
-    //step() function invoked when button clicked
+   
     @IBAction func StepHit(sender: AnyObject) {
-        
-        //tried to call step() function but returns an error
-        //standardengine.step()
-        
+
     }
+    
     
     var engine = StandardEngine.sharedInstance
 
-    //override engineDidUpdate because SimulationViewController implements EngineDelegate
+
     func engineDidUpdate(withGrid: GridProtocol) {
         gridview.rows = Int(withGrid.rows)
         gridview.cols = Int(withGrid.cols)
+        gridview.setNeedsDisplay()
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         engine.delegate = self
         

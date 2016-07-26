@@ -33,42 +33,54 @@
                                     <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7I1-qw-xU1">
                                         <rect key="frame" x="0.0" y="20" width="560" height="456"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvQ-Xo-5c1" userLabel="Rows">
-                                                <rect key="frame" x="230" y="0.0" width="100" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-TA-0kI">
+                                                <rect key="frame" x="260" y="0.0" width="41" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvQ-Xo-5c1" userLabel="Rows">
+                                                <rect key="frame" x="230" y="55" width="100" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="zGc-VA-dNj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="RowsEntered:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="k6j-Oj-J3D"/>
+                                                    <action selector="RowsEntered:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="D9i-Pn-epx"/>
                                                 </connections>
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7lc-cQ-waY" userLabel="RowStepper">
-                                                <rect key="frame" x="233" y="85" width="94" height="29"/>
+                                                <rect key="frame" x="233" y="118" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="IncrementRows:" destination="9pv-A4-QxB" eventType="valueChanged" id="TPS-A7-lc7"/>
                                                 </connections>
                                             </stepper>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uo-XK-hou" userLabel="Columns">
-                                                <rect key="frame" x="230" y="170" width="100" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-OK-w21">
+                                                <rect key="frame" x="246" y="181" width="68" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uo-XK-hou" userLabel="Columns">
+                                                <rect key="frame" x="230" y="235" width="100" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="EHe-Dl-roG"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="ColsEntered:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="ZyM-oH-UTZ"/>
+                                                    <action selector="ColsEntered:" destination="9pv-A4-QxB" eventType="editingDidEnd" id="A7c-tg-jwr"/>
                                                 </connections>
                                             </textField>
                                             <stepper opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="SZ5-RS-OJ7" userLabel="ColumnStepper">
-                                                <rect key="frame" x="233" y="255" width="94" height="29"/>
+                                                <rect key="frame" x="233" y="299" width="94" height="29"/>
                                                 <connections>
                                                     <action selector="IncrementC:" destination="9pv-A4-QxB" eventType="valueChanged" id="YST-I5-GJz"/>
                                                 </connections>
                                             </stepper>
                                             <slider opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.10000000000000001" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="lGt-rI-loH" userLabel="RefreshRate">
-                                                <rect key="frame" x="128" y="340" width="304" height="31"/>
+                                                <rect key="frame" x="128" y="361" width="304" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="1IJ-Mu-wLu"/>
                                                     <constraint firstAttribute="width" constant="300" id="GvU-Xw-xY5"/>

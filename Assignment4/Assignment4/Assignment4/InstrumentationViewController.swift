@@ -45,16 +45,11 @@ class InstrumentationViewController: UIViewController{
             engine.refreshTimer?.invalidate()
             let sel = #selector(StandardEngine.timerDidFire(_:))
             engine.refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1/engine.refreshRate,
-                                                                         target: self,
+                                                                         target: engine,
                                                                          selector: sel,
                                                                          userInfo: nil,
                                                                          repeats: true)
-        
-        
-        func timerDidFire(timer:NSTimer) {
-            //step()
-            engine.rows += 1
-        }
+
             
         }
         else {
@@ -71,6 +66,7 @@ class InstrumentationViewController: UIViewController{
     @IBAction func IncrementRows(sender: AnyObject) {
         engine.rows += 10
         Rows.text = engine.rows.description
+        //engine.rows = UInt(Rows.text!)!
     }
     
     
@@ -83,6 +79,7 @@ class InstrumentationViewController: UIViewController{
     @IBAction func IncrementC(sender: AnyObject) {
         engine.cols += 10
         Columns.text = engine.cols.description
+        //engine.cols = UInt(Columns.text!)!
     }
 
 
@@ -99,6 +96,8 @@ class InstrumentationViewController: UIViewController{
     @IBAction func ColsEntered(sender: AnyObject) {
         engine.cols = UInt(Columns.text!)!
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

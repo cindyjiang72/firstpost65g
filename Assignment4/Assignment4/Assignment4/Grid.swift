@@ -259,6 +259,7 @@ import Foundation
         var rows: UInt = 10 {
             didSet {
                 if let delegate = delegate {
+                    grid = Grid(rows: rows, cols: cols)
                     delegate.engineDidUpdate(grid)
                 }
                 
@@ -267,6 +268,7 @@ import Foundation
         var cols: UInt = 10 {
             didSet {
                 if let delegate = delegate {
+                    grid = Grid(rows: rows, cols: cols)
                     delegate.engineDidUpdate(grid)
                     
                 }
@@ -283,14 +285,14 @@ import Foundation
         
         func step() -> GridProtocol
         {
-            //grid = Grid(rows: rows, cols: cols)
+            
             let after = Grid(rows:rows, cols: cols)
             
 //            for Ro in 0...rows-1
 //            {
 //                for Co in 0...cols-1
 //                {
-//                    switch grid.subscript(Ro,Co){
+//                    switch grid(Ro,Co){
 //                        
 //                    case .Empty, .Dead:
 //                        var afterAlive = 0

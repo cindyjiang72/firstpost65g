@@ -29,7 +29,7 @@ typealias Cell = (position: Position, state: CellState)
 protocol GridProtocol {
     var rows: Int { get }
     var cols: Int { get }
-    var cells: [Cell] { get }
+    var cells: [Cell] { get set }
     
     var living: Int { get }
     var dead:   Int { get }
@@ -93,7 +93,7 @@ class StandardEngine: EngineProtocol {
             return grid.cells[i*cols+j].state
         }
         set {
-//            grid.cells[i*cols+j].state = newValue
+            grid.cells[i*cols+j].state = newValue
         }
     }
     
