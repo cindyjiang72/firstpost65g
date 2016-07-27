@@ -10,6 +10,13 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
     
+    @IBAction func IconLink(sender: AnyObject) {
+        if let url = NSURL(string: "https://icons8.com") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -85,7 +85,32 @@ class StandardEngine: EngineProtocol {
     
     weak var delegate: EngineDelegate?
     
-    var refreshRate:  Double = 0.0
+    var refreshRate = 0.0 {
+        didSet {
+            if refreshRate != 0 {
+                if let timer = refreshTimer { timer.invalidate() }
+                let sel = #selector(StandardEngine.timerDidFire(_:))
+                refreshTimer = NSTimer.scheduledTimerWithTimeInterval(1/refreshRate,
+                                                                      target: self,
+                                                                      selector: sel,
+                                                                      userInfo: nil,
+                                                                      repeats: true)
+            }
+            else if let timer = refreshTimer {
+                timer.invalidate()
+                self.refreshTimer = nil
+            }
+        }
+        
+    }
+    
+    @objc func timerDidFire(timer:NSTimer) {
+        step()
+        //self.rows += 1
+        let date = NSDate()
+        print ("\(date)")
+    }
+    
     var refreshTimer: NSTimer?
     
     subscript (i:Int, j:Int) -> CellState {

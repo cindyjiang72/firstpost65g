@@ -8,9 +8,9 @@
 
 import UIKit
 
-class GridView: UIView {
+@IBDesignable class GridView: UIView {
     
-    
+    var engine = StandardEngine.sharedInstance
     
     func toggle(value:CellState) -> CellState
     {
@@ -43,7 +43,6 @@ class GridView: UIView {
             setNeedsDisplay()
         }
     }
-    
     
     
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
@@ -149,6 +148,7 @@ class GridView: UIView {
             
             let before = getPointState(touch.locationInView(self))
             grid[y][x] = toggle(before)
+            engine(i: y, j: x) = .Alive
             
             
             
@@ -157,9 +157,6 @@ class GridView: UIView {
         
     }
     
-    
-//    override func drawRect(rect: CGRect) {
-//        super.drawRect(rect)
-//   }
+
     
 }
