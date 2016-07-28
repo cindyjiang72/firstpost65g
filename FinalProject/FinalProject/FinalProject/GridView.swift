@@ -28,23 +28,6 @@ import UIKit
         
     }
     
-    var grid = [[CellState]]()
-    
-    @IBInspectable var rows: Int = 20{
-        didSet{
-            grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
-            setNeedsDisplay()
-        }
-        
-    }
-    @IBInspectable var cols: Int = 20{
-        didSet{
-            grid = [[CellState]](count: rows, repeatedValue: Array(count:cols, repeatedValue: .Empty))
-            setNeedsDisplay()
-        }
-    }
-    
-    
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
     @IBInspectable var emptyColor: UIColor = UIColor.grayColor()
     @IBInspectable var bornColor: UIColor = UIColor.greenColor()
@@ -68,11 +51,26 @@ import UIKit
     }
     
     
+    var rows: Int { get { return engine.rows } }
+    var cols: Int { get { return engine.cols } }
+    
+    var grid: [[CellState]] {
+        get {
+            var currentGrid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
+            
+            for row in 0..<rows {
+                for col in 0..<cols {
+                    currentGrid[row][col] = engine.grid.cells[row*cols+col].state
+                }
+            }
+            
+            return currentGrid
+        }
+    }
+    
     @IBInspectable var gridWidth: CGFloat = 2.0
     
     override func drawRect(rect: CGRect) {
-        
-        
         let width: CGFloat = self.bounds.width
         let height: CGFloat = self.bounds.height
         
@@ -101,11 +99,10 @@ import UIKit
         plusPath.lineWidth = gridWidth
         plusPath.stroke()
         
-        
-        
-        for r in 0...rows-1 {
-            for c in 0...cols-1 {
+        for r in 0..<rows {
+            for c in 0..<cols {
                 let path = UIBezierPath(ovalInRect: CGRectMake(CGFloat(c)*gridLength,CGFloat(r)*gridHeight,gridLength,gridHeight))
+                
                 let colornew: UIColor = color(grid[r][c])
                 colornew.setFill()
                 path.fill()
@@ -121,15 +118,14 @@ import UIKit
     func getPointState(value: CGPoint) -> CellState {
         let width: CGFloat = self.bounds.width
         let height: CGFloat = self.bounds.height
+        
         let gridLength:CGFloat = width/CGFloat(cols)
         let gridHeight:CGFloat = height/CGFloat(rows)
-        
         
         let x = Int((value.x)/gridLength)
         let y = Int((value.y)/gridHeight)
         
         return grid[y][x]
-        
     }
     
     
@@ -147,10 +143,8 @@ import UIKit
             let y = Int((touch.locationInView(self).y)/gridHeight)
             
             let before = getPointState(touch.locationInView(self))
-            grid[y][x] = toggle(before)
-            engine(i: y, j: x) = .Alive
             
-            
+            engine.grid.cells[y*cols+x].state = toggle(before)
             
             setNeedsDisplayInRect(CGRect(x: CGFloat(x)*gridLength, y: CGFloat(y)*gridHeight, width: gridLength, height: gridHeight))
         }

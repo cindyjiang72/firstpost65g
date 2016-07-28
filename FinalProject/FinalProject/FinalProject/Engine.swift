@@ -22,6 +22,22 @@ enum CellState {
         case .Died, .Empty: return false
         }
     }
+    
+    func toggle(value:CellState) -> CellState
+    {
+        switch value
+        {
+        case .Alive:
+            return .Empty
+        case .Empty:
+            return .Alive
+        case .Born:
+            return .Empty
+        case .Died:
+            return .Alive
+        }
+        
+    }
 }
 
 typealias Cell = (position: Position, state: CellState)
@@ -54,9 +70,12 @@ protocol EngineProtocol {
     var grid: GridProtocol { get }
     weak var delegate: EngineDelegate? { get set }
     
+    
+    
     var refreshRate:  Double { get set }
     var refreshTimer: NSTimer? { get set }
     
+    func cellToggled(row:Int, col:Int)
     func step() -> GridProtocol
 }
 
@@ -64,22 +83,26 @@ typealias CellInitializer = (Position) -> CellState
 
 class StandardEngine: EngineProtocol {
     
-    static var _sharedInstance: StandardEngine = StandardEngine(20,20)
+    static var _sharedInstance: StandardEngine = StandardEngine(4,3)
     static var sharedInstance: StandardEngine { get { return _sharedInstance } }
     
-    var grid: GridProtocol
-    
-    var rows: Int = 20 {
+    var grid: GridProtocol {
         didSet {
-            grid = Grid(self.rows, self.cols) { _,_ in .Empty }
-            if let delegate = delegate { delegate.engineDidUpdate(grid) }
+            delegate?.engineDidUpdate(grid)
         }
     }
     
-    var cols: Int = 20 {
+    var rows: Int = 4 {
         didSet {
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
-            if let delegate = delegate { delegate.engineDidUpdate(grid) }
+            delegate?.engineDidUpdate(grid)
+        }
+    }
+    
+    var cols: Int = 3 {
+        didSet {
+            grid = Grid(self.rows, self.cols) { _,_ in .Empty }
+            delegate?.engineDidUpdate(grid)
         }
     }
     
@@ -122,7 +145,9 @@ class StandardEngine: EngineProtocol {
         }
     }
     
-    
+    func cellToggled(row: Int, col: Int) {
+        grid[row,col] = grid[row,col].toggle(grid[row,col])
+    }
     
     init(_ rows: Int, _ cols: Int, cellInitializer: CellInitializer = {_ in .Empty }) {
         self.rows = rows

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D63DEAF61D49491B009E2A15 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63DEAF51D49491B009E2A15 /* Fetcher.swift */; };
 		D6F74CE91D459367002E73D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F74CE81D459367002E73D3 /* AppDelegate.swift */; };
 		D6F74CEB1D459367002E73D3 /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F74CEA1D459367002E73D3 /* InstrumentationViewController.swift */; };
 		D6F74CED1D459367002E73D3 /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F74CEC1D459367002E73D3 /* SimulationViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D63DEAF51D49491B009E2A15 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		D6F74CE51D459367002E73D3 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F74CE81D459367002E73D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6F74CEA1D459367002E73D3 /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				D6F74CEE1D459367002E73D3 /* Main.storyboard */,
 				D6F74D021D45B3A8002E73D3 /* GridView.swift */,
 				D6F74D041D45B3B6002E73D3 /* Engine.swift */,
+				D63DEAF51D49491B009E2A15 /* Fetcher.swift */,
 				D6F74D001D459E15002E73D3 /* ConfigurationEditorViewController.swift */,
 				D6F74CF11D459367002E73D3 /* Assets.xcassets */,
 				D6F74CF31D459367002E73D3 /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 				D6F74D051D45B3B6002E73D3 /* Engine.swift in Sources */,
 				D6F74CFF1D459DA8002E73D3 /* ConfigurationViewController.swift in Sources */,
 				D6F74CEB1D459367002E73D3 /* InstrumentationViewController.swift in Sources */,
+				D63DEAF61D49491B009E2A15 /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +316,7 @@
 				D6F74CFB1D459367002E73D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

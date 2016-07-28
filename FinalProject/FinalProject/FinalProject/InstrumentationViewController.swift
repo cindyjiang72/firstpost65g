@@ -36,8 +36,6 @@ class InstrumentationViewController: UIViewController {
                                                                          selector: sel,
                                                                          userInfo: nil,
                                                                          repeats: true)
-            
-            
         }
         else {
             engine.refreshTimer?.invalidate()
@@ -46,19 +44,17 @@ class InstrumentationViewController: UIViewController {
     
     @IBOutlet weak var Rows: UITextField!
     
-    @IBAction func IncrementR(sender: AnyObject) {
-        engine.rows += 10
-
+    @IBAction func rowStepperChanged(sender: UIStepper) {
+        let numRows = Int(sender.value)
+        engine.rows = numRows
         Rows.text = engine.rows.description
-        
-        
     }
     
     @IBOutlet weak var Columns: UITextField!
     
-    @IBAction func IncrementC(sender: AnyObject) {
-        engine.cols += 10
-
+    @IBAction func colStepperChanged(sender: UIStepper) {
+        let numCols = Int(sender.value)
+        engine.cols = numCols
         Columns.text = engine.cols.description
     }
     

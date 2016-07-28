@@ -9,6 +9,27 @@
 import UIKit
 
 class SimulationViewController: UIViewController, EngineDelegate {
+    
+    @IBOutlet weak var gridview: GridView!
+    
+    var engine = StandardEngine.sharedInstance
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        engine.delegate = self
+        gridview.setNeedsDisplay()
+    }
+    
+    
+    @IBAction func stepHit(sender: AnyObject) {
+        engine.step()
+        
+    }
 
     @IBAction func LinkIcon(sender: AnyObject) {
         if let url = NSURL(string: "https://icons8.com") {
@@ -16,52 +37,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
         }
     }
     
-    var engine = StandardEngine.sharedInstance
-    
-    @IBOutlet weak var gridview: GridView!
-
-    
     func engineDidUpdate(withGrid: GridProtocol) {
-        gridview.rows = Int(withGrid.rows)
-        gridview.cols = Int(withGrid.cols)
         gridview.setNeedsDisplay()
     }
-    
-    
-
-    @IBAction func stepHit(sender: AnyObject) {
-        engine.step()
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        engine.delegate = self
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-       
-    }
-
 
 }
 
