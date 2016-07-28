@@ -10,17 +10,28 @@ import UIKit
 
 class SimulationViewController: UIViewController, EngineDelegate {
     
-    @IBOutlet weak var gridview: GridView!
-    
-    var engine = StandardEngine.sharedInstance
+    //comment on the source of Icon
+    @IBAction func LinkIcon(sender: AnyObject) {
+        if let url = NSURL(string: "https://icons8.com") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    @IBOutlet weak var gridview: GridView!
+    
+    var engine = StandardEngine.sharedInstance
+    
+    func engineDidUpdate(withGrid: GridProtocol) {
+        gridview.setNeedsDisplay()
+    }
+    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         engine.delegate = self
         gridview.setNeedsDisplay()
     }
@@ -28,18 +39,14 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBAction func stepHit(sender: AnyObject) {
         engine.step()
-        
     }
 
-    @IBAction func LinkIcon(sender: AnyObject) {
-        if let url = NSURL(string: "https://icons8.com") {
-            UIApplication.sharedApplication().openURL(url)
-        }
-    }
     
-    func engineDidUpdate(withGrid: GridProtocol) {
+    @IBAction func resetHit(sender: AnyObject) {
+        engine.grid = Grid(engine.rows, engine.cols) { _,_ in .Empty }
         gridview.setNeedsDisplay()
     }
+    
 
 }
 

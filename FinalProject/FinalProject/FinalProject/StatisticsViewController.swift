@@ -10,21 +10,21 @@ import UIKit
 
 class StatisticsViewController: UIViewController, EngineDelegate {
     
-    @IBOutlet weak var emptyTextField: UITextField!
-    @IBOutlet weak var bornTextField: UITextField!
-    @IBOutlet weak var aliveTextField: UITextField!
-    @IBOutlet weak var deadTextField: UITextField!
-    
+    //comment on the source of the Icon
     @IBAction func IconLink(sender: AnyObject) {
         if let url = NSURL(string: "https://icons8.com") {
             UIApplication.sharedApplication().openURL(url)
         }
     }
     
+    @IBOutlet weak var emptyTextField: UITextField!
+    @IBOutlet weak var bornTextField: UITextField!
+    @IBOutlet weak var aliveTextField: UITextField!
+    @IBOutlet weak var diedTextField: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,12 +41,11 @@ class StatisticsViewController: UIViewController, EngineDelegate {
         emptyTextField.text = grid.empty.description
         bornTextField.text = grid.born.description
         aliveTextField.text = grid.alive.description
-        deadTextField.text = grid.dead.description
+        diedTextField.text = grid.died.description
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     

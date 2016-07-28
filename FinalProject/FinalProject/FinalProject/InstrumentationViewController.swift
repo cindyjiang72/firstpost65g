@@ -9,12 +9,14 @@
 import UIKit
 
 class InstrumentationViewController: UIViewController {
-
+    
+    //comment on the source of Icon
     @IBAction func LinkIcon(sender: AnyObject) {
         if let url = NSURL(string: "https://icons8.com") {
             UIApplication.sharedApplication().openURL(url)
         }
     }
+    
     
     var engine = StandardEngine.sharedInstance
     
@@ -23,9 +25,14 @@ class InstrumentationViewController: UIViewController {
     @IBAction func SliderChanged(sender: UISlider!) {
         print(refreshRate)
         engine.refreshRate = Double(refreshRate.value)
+        if !mySwitch.on {
+            mySwitch.on = true
+        }
         
     }
+
     
+    @IBOutlet weak var mySwitch: UISwitch!
     
     @IBAction func refreshSwitch(uiSwitch: UISwitch!) {
         if uiSwitch.on {
@@ -67,11 +74,6 @@ class InstrumentationViewController: UIViewController {
         engine.cols = Int(Columns.text!)!
 
     }
-    
-    
-    
-    
-    
     
     
     

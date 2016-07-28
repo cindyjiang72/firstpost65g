@@ -15,18 +15,24 @@ class ConfigurationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//http://api.openweathermap.org/data/2.5/weather?q=boston,%20ma&appid=77e555f36584bc0c3d55e1e584960580
+//https://dl.dropboxusercontent.com/u/7544475/S65g.json
+        
         
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
+
             if let json = json,
-                dict = json as? Dictionary<String,AnyObject> {
-                let keys = dict.keys
-                self.names = Array(keys)
+                dict = json as? Array<Dictionary<String,AnyObject>> {
+                for i in 0..<dict.count{
+                let title = dict[i]["title"]!
+                    self.names.append(title as! String)}
                 let op = NSBlockOperation {
                     self.tableView.reloadData()
                     
                 }
+                
                 
                 NSOperationQueue.mainQueue().addOperation(op)
                 
@@ -35,6 +41,13 @@ class ConfigurationViewController: UITableViewController {
         }
     }
 
+    @IBAction func addName(sender: AnyObject) {
+        
+        names.append("Add a new configuration...")
+        let itemRow = names.count - 1
+        let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
+        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

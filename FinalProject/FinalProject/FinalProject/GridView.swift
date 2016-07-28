@@ -28,6 +28,17 @@ import UIKit
         
     }
     
+    var points: [(Int, Int)] {
+        get {
+            
+            return points
+        }
+        set {
+            
+        }
+    }
+    
+    
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
     @IBInspectable var emptyColor: UIColor = UIColor.grayColor()
     @IBInspectable var bornColor: UIColor = UIColor.greenColor()

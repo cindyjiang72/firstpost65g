@@ -83,7 +83,7 @@ typealias CellInitializer = (Position) -> CellState
 
 class StandardEngine: EngineProtocol {
     
-    static var _sharedInstance: StandardEngine = StandardEngine(4,3)
+    static var _sharedInstance: StandardEngine = StandardEngine(20,20)
     static var sharedInstance: StandardEngine { get { return _sharedInstance } }
     
     var grid: GridProtocol {
@@ -92,14 +92,14 @@ class StandardEngine: EngineProtocol {
         }
     }
     
-    var rows: Int = 4 {
+    var rows: Int = 20 {
         didSet {
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
             delegate?.engineDidUpdate(grid)
         }
     }
     
-    var cols: Int = 3 {
+    var cols: Int = 20 {
         didSet {
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
             delegate?.engineDidUpdate(grid)
