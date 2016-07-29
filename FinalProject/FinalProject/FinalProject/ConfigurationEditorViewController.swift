@@ -23,6 +23,17 @@ class ConfigurationEditorViewController: UIViewController {
 //        navigationController!.popViewControllerAnimated(true)
 //    }
 
+    var name:String?
+    var commit: (GridView -> Void)?
+
+//    @IBOutlet weak var nameTextField: UITextField!
+//    
+//    @IBAction func save(sender: AnyObject) {
+//        guard let newText = nameTextField.text, commit = commit
+//            else { return }
+//        commit(newText)
+//        navigationController!.popViewControllerAnimated(true)
+//    }
     
     
     override func viewDidLoad() {

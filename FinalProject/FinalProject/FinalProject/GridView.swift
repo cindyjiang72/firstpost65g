@@ -34,7 +34,9 @@ import UIKit
             return points
         }
         set {
-            
+            for i in 0..<points.count {
+                grid[self.points[i].0][points[i].1] = toggle(grid[points[i].0][points[i].1])
+            }
         }
     }
     
@@ -62,10 +64,11 @@ import UIKit
     }
     
     
-    var rows: Int { get { return engine.rows } }
-    var cols: Int { get { return engine.cols } }
+    var rows: Int { get { return engine.rows } set{} }
+    var cols: Int { get { return engine.cols } set{} }
     
     var grid: [[CellState]] {
+        set{}
         get {
             var currentGrid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
             

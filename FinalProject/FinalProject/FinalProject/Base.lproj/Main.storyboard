@@ -214,6 +214,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="560" height="34"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vLT-Tn-yY4" kind="show" id="DjS-tM-GMe"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -529,4 +532,7 @@
         <image name="Pineapple Filled-25" width="25" height="25"/>
         <image name="Watermelon-25" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="geX-c9-ub2"/>
+    </inferredMetricsTieBreakers>
 </document>
