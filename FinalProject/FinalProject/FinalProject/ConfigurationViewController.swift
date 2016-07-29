@@ -36,6 +36,7 @@ class ConfigurationViewController: UITableViewController {
             }
         }
     }
+    
 
     @IBAction func addName(sender: AnyObject) {
         
@@ -114,7 +115,8 @@ class ConfigurationViewController: UITableViewController {
     }
     
     
-    
+    @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue) {
+    }
     
     
     

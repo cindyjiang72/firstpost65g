@@ -30,12 +30,16 @@ import UIKit
     
     var points: [(Int, Int)] {
         get {
-            
-            return points
+//            for j in 0..<rows*cols {
+//                if
+//            }
+            return self.points
         }
         set {
+            self.points = newValue
+            grid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
             for i in 0..<points.count {
-                grid[self.points[i].0][points[i].1] = toggle(grid[points[i].0][points[i].1])
+                grid[self.points[i].0][self.points[i].1] = .Alive
             }
         }
     }
@@ -64,11 +68,17 @@ import UIKit
     }
     
     
-    var rows: Int { get { return engine.rows } set{} }
-    var cols: Int { get { return engine.cols } set{} }
+    var rows: Int {
+        get { return engine.rows }
+        set{self.rows = newValue}
+    }
+    var cols: Int {
+        get { return engine.cols }
+        set{self.cols = newValue}
+    }
     
     var grid: [[CellState]] {
-        set{}
+        set{self.grid = newValue}
         get {
             var currentGrid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
             

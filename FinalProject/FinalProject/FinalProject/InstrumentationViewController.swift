@@ -17,7 +17,6 @@ class InstrumentationViewController: UIViewController {
         }
     }
     
-    
     var engine = StandardEngine.sharedInstance
     
     @IBOutlet weak var refreshRate: UISlider!
@@ -28,7 +27,6 @@ class InstrumentationViewController: UIViewController {
         if !mySwitch.on {
             mySwitch.on = true
         }
-        
     }
 
     

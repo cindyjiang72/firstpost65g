@@ -10,6 +10,7 @@ import UIKit
 
 class ConfigurationEditorViewController: UIViewController {
     
+    @IBOutlet weak var ConfigurationGridView: GridView!
  
 //    var name:String?
 //    var commit: (String -> Void)?
@@ -45,6 +46,8 @@ class ConfigurationEditorViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+       
     
     /*
      // MARK: - Navigation
