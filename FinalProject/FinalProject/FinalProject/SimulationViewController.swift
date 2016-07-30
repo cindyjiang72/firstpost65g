@@ -32,6 +32,10 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        StandardEngine.sharedInstance.configuration = nil
+        
         engine.delegate = self
         gridview.setNeedsDisplay()
     }
@@ -47,6 +51,18 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gridview.setNeedsDisplay()
     }
     
+    @IBOutlet weak var newConfigurationTitleTextField: UITextField!
+    
+    @IBAction func savePressed(sender: AnyObject) {
+        guard let title = newConfigurationTitleTextField.text where !title.isEmpty else { return }
+        
+        // TODO: Fill up contents array with the (Int, Int) positions of alive cells in engine.grid
+        let contents = [(Int, Int)]()
+        
+        let configuration = Configuration(title: title, contents: contents)
+        
+        engine.configurations.append(configuration)
+    }
 
 }
 

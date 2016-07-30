@@ -12,6 +12,7 @@ class ConfigurationEditorViewController: UIViewController {
     
     @IBOutlet weak var ConfigurationGridView: GridView!
  
+    
 //    var name:String?
 //    var commit: (String -> Void)?
 //    
@@ -39,8 +40,23 @@ class ConfigurationEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addCityNotification), name: "rowsClicked", object: nil)
 
     }
+    
+    func addCityNotification(notification: NSNotification) {
+        
+        // will print out the new city to the console
+//        print("notification: ", notification.userInfo!["newCity"])
+//        
+//        tableView.reloadData()
+        
+        ConfigurationGridView.rows = 2
+        ConfigurationGridView.cols = 2
+        ConfigurationGridView.setNeedsDisplay()
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

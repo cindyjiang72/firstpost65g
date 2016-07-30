@@ -29,7 +29,6 @@ class InstrumentationViewController: UIViewController {
         }
     }
 
-    
     @IBOutlet weak var mySwitch: UISwitch!
     
     @IBAction func refreshSwitch(uiSwitch: UISwitch!) {

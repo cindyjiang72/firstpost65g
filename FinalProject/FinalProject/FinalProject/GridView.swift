@@ -12,6 +12,7 @@ import UIKit
     
     var engine = StandardEngine.sharedInstance
     
+    
     func toggle(value:CellState) -> CellState
     {
         switch value
@@ -26,22 +27,6 @@ import UIKit
             return .Alive
         }
         
-    }
-    
-    var points: [(Int, Int)] {
-        get {
-//            for j in 0..<rows*cols {
-//                if
-//            }
-            return self.points
-        }
-        set {
-            self.points = newValue
-            grid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
-            for i in 0..<points.count {
-                grid[self.points[i].0][self.points[i].1] = .Alive
-            }
-        }
     }
     
     
@@ -69,28 +54,73 @@ import UIKit
     
     
     var rows: Int {
-        get { return engine.rows }
-        set{self.rows = newValue}
+        get {
+            if let configuration = engine.configuration {
+                let rowValues = configuration.contents.map({ return $0.0 })
+                return rowValues.maxElement()! + 1
+            }
+            
+            return engine.rows
+        }
+        set{
+            self.rows = newValue
+        }
     }
     var cols: Int {
-        get { return engine.cols }
-        set{self.cols = newValue}
+        get {
+            if let configuration = engine.configuration {
+                let colValues = configuration.contents.map({ return $0.1 })
+                return colValues.maxElement()! + 1
+            }
+            
+            return engine.cols
+        }
+        
+        set{
+            self.cols = newValue
+        }
     }
     
     var grid: [[CellState]] {
         set{self.grid = newValue}
+        
         get {
             var currentGrid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
             
-            for row in 0..<rows {
-                for col in 0..<cols {
-                    currentGrid[row][col] = engine.grid.cells[row*cols+col].state
+            guard let configuration = engine.configuration else {
+                for row in 0..<rows {
+                    for col in 0..<cols {
+                        currentGrid[row][col] = engine.grid[(row,col)]
+                    }
                 }
+                
+                return currentGrid
+            }
+            
+            configuration.contents.forEach { point in
+                currentGrid[point.0][point.1] = .Alive
             }
             
             return currentGrid
+            
         }
     }
+    
+//    var points: [(Int, Int)] {
+//        get {
+//            //            for j in 0..<rows*cols {
+//            //                if
+//            //            }
+//            return self.points
+//        }
+//        set {
+//            self.points = newValue
+//            grid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
+//            for i in 0..<points.count {
+//                grid[self.points[i].0][self.points[i].1] = .Alive
+//            }
+//        }
+//    }
     
     @IBInspectable var gridWidth: CGFloat = 2.0
     
@@ -168,7 +198,11 @@ import UIKit
             
             let before = getPointState(touch.locationInView(self))
             
-            engine.grid.cells[y*cols+x].state = toggle(before)
+            if let _ = engine.configuration {
+                engine.configuration?.contents.append((y,x))
+            } else {
+                engine.grid.cells[y*cols+x].state = toggle(before)
+            }
             
             setNeedsDisplayInRect(CGRect(x: CGFloat(x)*gridLength, y: CGFloat(y)*gridHeight, width: gridLength, height: gridHeight))
         }

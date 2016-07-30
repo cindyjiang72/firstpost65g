@@ -62,6 +62,13 @@ protocol GridProtocol {
 
 protocol  EngineDelegate: class {
     func engineDidUpdate(withGrid: GridProtocol)
+    func configurationsDidUpdate(withConfigurations: [Configuration])
+}
+
+extension EngineDelegate {
+    func configurationsDidUpdate(withConfigurations: [Configuration]) {
+        // default implementatin does nothing
+    }
 }
 
 protocol EngineProtocol {
@@ -85,6 +92,15 @@ class StandardEngine: EngineProtocol {
     
     static var _sharedInstance: StandardEngine = StandardEngine(20,20)
     static var sharedInstance: StandardEngine { get { return _sharedInstance } }
+    
+    
+    var configuration: Configuration?
+    
+    var configurations = [Configuration]() {
+        didSet {
+            delegate?.configurationsDidUpdate(configurations)
+        }
+    }
     
     var grid: GridProtocol {
         didSet {
