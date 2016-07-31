@@ -17,6 +17,7 @@ class InstrumentationViewController: UIViewController {
         }
     }
     
+    
     var engine = StandardEngine.sharedInstance
     
     @IBOutlet weak var refreshRate: UISlider!
@@ -63,13 +64,14 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func RowsEntered(sender: AnyObject) {
+        Rows.text = String(engine.rows)
         engine.rows = Int(Rows.text!)!
     }
     
     
     @IBAction func ColsEntered(sender: AnyObject) {
+        Columns.text = String(engine.cols)
         engine.cols = Int(Columns.text!)!
-
     }
     
     

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct Configuration {
     var title: String
     var contents: [(Int, Int)]
@@ -44,26 +43,17 @@ class ConfigurationViewController: UITableViewController {
         fetcher.requestJSON(url) { (json, message) in
             
             if let json = json, array = json as? Array<Dictionary<String,AnyObject>> {
-//                for i in 0..<dict.count{
-//                    let title = dict[i]["title"]!
-//                    self.names.append(title as! String)
-//                }
-                
                 self.configurations = array.map({ (elementJSON) in
                     return Configuration.fromJSON(elementJSON)
                 })
-                
-                
-                
-                
-                
+
                 
                 let op = NSBlockOperation {
                     self.tableView.reloadData()
                 }
                 NSOperationQueue.mainQueue().addOperation(op)
                 
-                
+                self.engine.configurations = self.configurations
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("rowsClicked", object: nil, userInfo: json as? [NSObject : AnyObject])
             }
@@ -114,24 +104,10 @@ class ConfigurationViewController: UITableViewController {
     
     func configurationsDidUpdate(withConfigurations: [Configuration]) {
         // do something with new configurations
+        
         tableView.reloadData()
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let editingRow = (sender as! UITableViewCell).tag
-//        let editingString = names[editingRow]
-//        guard let editingVC = segue.destinationViewController as? ConfigurationEditorViewController
-//            else {
-//                preconditionFailure("Another wtf?")
-//        }
-//        editingVC.name = editingString
-//        editingVC.commit = {
-//            self.names[editingRow] = $0
-//            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
-//            self.tableView.reloadRowsAtIndexPaths([indexPath],
-//                                                  withRowAnimation: .Automatic)
-//        }
-//    }
+
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let editingRow = (sender as! UITableViewCell).tag
@@ -141,17 +117,13 @@ class ConfigurationViewController: UITableViewController {
                 preconditionFailure("Another wtf?")
         }
         editingVC.name = editingString
-//        editingVC.commit = {
-//            self.names[editingRow] = $0
-//            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
-//            self.tableView.reloadRowsAtIndexPaths([indexPath],
-//                                                    withRowAnimation: .Automatic)
-//        }
+        editingVC.commit = {
+            self.configurations[editingRow].title = $0
+            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
+            self.tableView.reloadRowsAtIndexPaths([indexPath],
+                                                    withRowAnimation: .Automatic)
+        }
         
-        
-//        NSNotificationCenter.defaultCenter().postNotificationName("rowsClicked", object: nil, userInfo: Fetcher().requestJSON(url))
-        
-        //NSNotificationCenter.defaultCenter()
 
         
     }

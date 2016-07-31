@@ -106,21 +106,18 @@ import UIKit
         }
     }
     
-//    var points: [(Int, Int)] {
-//        get {
-//            //            for j in 0..<rows*cols {
-//            //                if
-//            //            }
-//            return self.points
-//        }
-//        set {
-//            self.points = newValue
-//            grid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
-//            for i in 0..<points.count {
-//                grid[self.points[i].0][self.points[i].1] = .Alive
-//            }
-//        }
-//    }
+    var points: [(Int, Int)] {
+        get {
+            return self.points
+        }
+        set {
+            self.points = newValue
+            grid = [[CellState]](count: rows, repeatedValue: [CellState](count: cols, repeatedValue: .Empty))
+            for i in 0..<points.count {
+                grid[self.points[i].0][self.points[i].1] = .Alive
+            }
+        }
+    }
     
     @IBInspectable var gridWidth: CGFloat = 2.0
     

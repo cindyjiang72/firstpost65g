@@ -19,6 +19,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     @IBOutlet weak var gridview: GridView!
@@ -32,7 +33,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         
         StandardEngine.sharedInstance.configuration = nil
         
@@ -53,6 +53,10 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBOutlet weak var newConfigurationTitleTextField: UITextField!
     
+//    func configurationsDidUpdate(withConfigurations: [Configuration]) {
+//        gridview.setNeedsDisplay()
+//    }
+    
     @IBAction func savePressed(sender: AnyObject) {
         guard let title = newConfigurationTitleTextField.text where !title.isEmpty else { return }
         
@@ -62,6 +66,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         let configuration = Configuration(title: title, contents: contents)
         
         engine.configurations.append(configuration)
+        
     }
 
 }
