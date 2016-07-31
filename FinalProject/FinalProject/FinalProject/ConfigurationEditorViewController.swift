@@ -27,6 +27,7 @@ class ConfigurationEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.text = name
      
     }
     
