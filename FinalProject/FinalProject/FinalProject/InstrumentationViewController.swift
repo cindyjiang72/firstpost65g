@@ -78,7 +78,7 @@ class InstrumentationViewController: UIViewController {
     
     @IBAction func reloadPressed(sender: AnyObject) {
         NSNotificationCenter.defaultCenter().postNotificationName("urlUpdated", object: nil, userInfo: ["new url" : urlTextField.text!])
-        
+
     }
     
     

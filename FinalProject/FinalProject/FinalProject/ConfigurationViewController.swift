@@ -37,14 +37,17 @@ class ConfigurationViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addUrlNoti), name: "urlUpdated", object: nil)
+        
+        
         
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             
             if let json = json, array = json as? Array<Dictionary<String,AnyObject>> {
-                self.configurations += array.map({ (elementJSON) in
+                self.configurations = array.map({ (elementJSON) in
                     return Configuration.fromJSON(elementJSON)
                 })
 
@@ -63,22 +66,25 @@ class ConfigurationViewController: UITableViewController {
 
     }
     
-    func addUrlNoti(notification: NSNotification){
+    func addUrlNoti(notification: NSNotification) -> String{
+        //print(72)
         
+        let new =  String(notification.userInfo?.values)
+        print(new)
+        return new
+
+        //let url = notification.userInfo?.values
     }
     
 
     @IBAction func addName(sender: AnyObject) {
-        configurations.append(Configuration(title: "Add a new configuration...", contents: []))
+        var new = Configuration(title: "Add a new configuration...", contents: [])
+        new.contents.append((15,15))//needs correction
+        configurations.append(new)
         let itemRow = configurations.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
-
-//        var newElement: Configuration
-//        var newcontents = [(Int, Int)]()
-//        newcontents.append((20,20))
-//        newElement = Configuration(title: "Add a new configuration...", contents: newcontents)
-//        self.configurations.append(newElement)
+        
     }
     
     

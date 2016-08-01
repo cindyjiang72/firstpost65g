@@ -12,7 +12,8 @@ class ConfigurationEditorViewController: UIViewController {
     
     @IBOutlet weak var ConfigurationGridView: GridView!
     @IBOutlet weak var nameTextField: UITextField!
- 
+    
+    var engine = StandardEngine.sharedInstance
 
     var name:String?
     var points: [(Int, Int)]?
@@ -24,11 +25,22 @@ class ConfigurationEditorViewController: UIViewController {
         
         guard let newText = nameTextField.text, commit = commit
             else { return }
+        
+        
+        var pp = [(Int, Int)]()
+        for i in 0..<ConfigurationGridView.rows {
+            for j in 0..<ConfigurationGridView.cols {
+                let state = ConfigurationGridView.grid[i][j]
+                if state == .Alive {
+                    pp.append((i,j))
+                }
+            }
+        }
+        points = pp
 
         
         guard let newcontents = points , commitpoints = commitpoints
             else { return }
-        
         
         commit(newText)
         
@@ -43,19 +55,6 @@ class ConfigurationEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.text = name
-        
-        
-        var pp = [(Int, Int)]()
-        for i in 0..<ConfigurationGridView.rows {
-            for j in 0..<ConfigurationGridView.cols {
-                //if ConfigurationGridView.grid(i,j) == .Alive {
-                pp.append((i,j))
-                //}
-            }
-        }
-        points = pp
-        
-        
         
      
     }

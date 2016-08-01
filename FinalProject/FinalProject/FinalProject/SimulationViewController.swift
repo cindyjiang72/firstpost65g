@@ -53,9 +53,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBOutlet weak var newConfigurationTitleTextField: UITextField!
     
-//    func configurationsDidUpdate(withConfigurations: [Configuration]) {
-//        gridview.setNeedsDisplay()
-//    }
+
     
     @IBAction func savePressed(sender: AnyObject) {
         guard let title = newConfigurationTitleTextField.text where !title.isEmpty else { return }
