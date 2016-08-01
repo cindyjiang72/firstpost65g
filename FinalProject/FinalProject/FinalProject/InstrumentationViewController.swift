@@ -74,6 +74,13 @@ class InstrumentationViewController: UIViewController {
         engine.cols = Int(Columns.text!)!
     }
     
+    @IBOutlet weak var urlTextField: UITextField!
+    
+    @IBAction func reloadPressed(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("urlUpdated", object: nil, userInfo: ["new url" : urlTextField.text!])
+        
+    }
+    
     
     
     override func viewDidLoad() {

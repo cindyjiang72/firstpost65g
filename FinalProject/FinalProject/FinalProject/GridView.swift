@@ -106,6 +106,17 @@ import UIKit
         }
     }
     
+//    subscript (i:Int, j:Int) -> CellState {
+//        get {
+//            return grid[i][j]
+//        }
+//        set {
+//            grid[i][j] = newValue
+//        }
+//    }
+//    
+    
+    
     var points: [(Int, Int)] {
         get {
             return self.points

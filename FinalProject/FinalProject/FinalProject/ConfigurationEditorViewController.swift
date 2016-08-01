@@ -15,19 +15,48 @@ class ConfigurationEditorViewController: UIViewController {
  
 
     var name:String?
+    var points: [(Int, Int)]?
+    
     var commit: (String -> Void)?
+    var commitpoints: ([(Int, Int)] -> Void)?
 
     @IBAction func saveClicked(sender: AnyObject) {
+        
         guard let newText = nameTextField.text, commit = commit
             else { return }
+
+        
+        guard let newcontents = points , commitpoints = commitpoints
+            else { return }
+        
+        
         commit(newText)
+        
+        commitpoints(newcontents)
+        
         navigationController!.popViewControllerAnimated(true)
+        
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.text = name
+        
+        
+        var pp = [(Int, Int)]()
+        for i in 0..<ConfigurationGridView.rows {
+            for j in 0..<ConfigurationGridView.cols {
+                //if ConfigurationGridView.grid(i,j) == .Alive {
+                pp.append((i,j))
+                //}
+            }
+        }
+        points = pp
+        
+        
+        
      
     }
     

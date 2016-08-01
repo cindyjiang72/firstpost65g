@@ -61,7 +61,15 @@ class SimulationViewController: UIViewController, EngineDelegate {
         guard let title = newConfigurationTitleTextField.text where !title.isEmpty else { return }
         
         // TODO: Fill up contents array with the (Int, Int) positions of alive cells in engine.grid
-        let contents = [(Int, Int)]()
+        var contents = [(Int, Int)]()
+        
+        for i in 0..<engine.rows {
+            for j in 0..<engine.cols {
+                if engine.grid[(i,j)] == .Alive || engine.grid[(i,j)] == .Born {
+                    contents.append((i,j))
+                }
+            }
+        }
         
         let configuration = Configuration(title: title, contents: contents)
         

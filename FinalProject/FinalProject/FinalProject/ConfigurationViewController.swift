@@ -37,13 +37,14 @@ class ConfigurationViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addUrlNoti), name: "urlUpdated", object: nil)
         
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             
             if let json = json, array = json as? Array<Dictionary<String,AnyObject>> {
-                self.configurations = array.map({ (elementJSON) in
+                self.configurations += array.map({ (elementJSON) in
                     return Configuration.fromJSON(elementJSON)
                 })
 
@@ -53,7 +54,7 @@ class ConfigurationViewController: UITableViewController {
                 }
                 NSOperationQueue.mainQueue().addOperation(op)
                 
-                self.engine.configurations = self.configurations
+                //self.engine.configurations = self.configurations
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("rowsClicked", object: nil, userInfo: json as? [NSObject : AnyObject])
             }
@@ -62,13 +63,24 @@ class ConfigurationViewController: UITableViewController {
 
     }
     
+    func addUrlNoti(notification: NSNotification){
+        
+    }
+    
 
     @IBAction func addName(sender: AnyObject) {
         configurations.append(Configuration(title: "Add a new configuration...", contents: []))
         let itemRow = configurations.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+
+//        var newElement: Configuration
+//        var newcontents = [(Int, Int)]()
+//        newcontents.append((20,20))
+//        newElement = Configuration(title: "Add a new configuration...", contents: newcontents)
+//        self.configurations.append(newElement)
     }
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return configurations.count
@@ -111,18 +123,32 @@ class ConfigurationViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let editingRow = (sender as! UITableViewCell).tag
+        
         let editingString = configurations[editingRow].title
+        let editingPoints = configurations[editingRow].contents
+        
         guard let editingVC = segue.destinationViewController as? ConfigurationEditorViewController
             else {
                 preconditionFailure("Another wtf?")
         }
+        
         editingVC.name = editingString
+        editingVC.points = editingPoints
+        
         editingVC.commit = {
             self.configurations[editingRow].title = $0
             let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
             self.tableView.reloadRowsAtIndexPaths([indexPath],
                                                     withRowAnimation: .Automatic)
         }
+        
+        editingVC.commitpoints = {
+            self.configurations[editingRow].contents = $0
+            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
+            self.tableView.reloadRowsAtIndexPaths([indexPath],
+                                                  withRowAnimation: .Automatic)
+        }
+
         
 
         
