@@ -84,13 +84,14 @@ protocol EngineProtocol {
     
     func cellToggled(row:Int, col:Int)
     func step() -> GridProtocol
+    func loadConfigurations(urlString: String)
 }
 
 typealias CellInitializer = (Position) -> CellState
 
 class StandardEngine: EngineProtocol {
     
-    static var _sharedInstance: StandardEngine = StandardEngine(20,20)
+    private static var _sharedInstance: StandardEngine = StandardEngine(20,20)
     static var sharedInstance: StandardEngine { get { return _sharedInstance } }
     
     
@@ -101,6 +102,37 @@ class StandardEngine: EngineProtocol {
             delegate?.configurationsDidUpdate(configurations)
         }
     }
+    
+    
+    func loadConfigurations(urlString: String) {
+        let url = NSURL(string: urlString)!
+        let fetcher = Fetcher()
+        fetcher.requestJSON(url) { (json, message) in
+            
+            if let json = json, array = json as? Array<Dictionary<String,AnyObject>> {
+                
+                let op = NSBlockOperation {
+                    self.configurations = array.map({ (elementJSON) in
+                        return Configuration.fromJSON(elementJSON)
+                    })
+                }
+                NSOperationQueue.mainQueue().addOperation(op)
+                
+            }
+        }
+    }
+    
+    func setGridFromConfiguration() {
+        if let configuration = configuration {
+            self.grid = Grid(rows, cols) { position in
+                if configuration.contents.contains({return $0.0 == position.row && $0.1 == position.col }) {
+                    return .Alive
+                } else { return .Empty }
+            }
+        }
+        
+    }
+    
     
     var grid: GridProtocol {
         didSet {
@@ -145,7 +177,6 @@ class StandardEngine: EngineProtocol {
     
     @objc func timerDidFire(timer:NSTimer) {
         step()
-        //self.rows += 1
         let date = NSDate()
         print ("\(date)")
     }

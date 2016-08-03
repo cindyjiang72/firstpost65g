@@ -55,11 +55,11 @@ import UIKit
     
     var rows: Int {
         get {
-            if let configuration = engine.configuration {
-                let rowValues = configuration.contents.map({ return $0.0 })
-                return rowValues.maxElement()! + 1
-            }
             
+            if let configuration = engine.configuration{
+                let rowValues = configuration.contents.map({ return $0.0 })
+                return (rowValues.maxElement() ?? 19) + 1
+            }
             return engine.rows
         }
         set{
@@ -70,9 +70,8 @@ import UIKit
         get {
             if let configuration = engine.configuration {
                 let colValues = configuration.contents.map({ return $0.1 })
-                return colValues.maxElement()! + 1
+                return (colValues.maxElement() ?? 19) + 1
             }
-            
             return engine.cols
         }
         
@@ -105,16 +104,6 @@ import UIKit
             
         }
     }
-    
-//    subscript (i:Int, j:Int) -> CellState {
-//        get {
-//            return grid[i][j]
-//        }
-//        set {
-//            grid[i][j] = newValue
-//        }
-//    }
-//    
     
     
     var points: [(Int, Int)] {
@@ -216,7 +205,5 @@ import UIKit
         }
         
     }
-    
-
     
 }

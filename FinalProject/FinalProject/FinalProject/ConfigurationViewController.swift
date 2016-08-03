@@ -22,7 +22,7 @@ struct Configuration {
 }
 
 
-class ConfigurationViewController: UITableViewController {
+class ConfigurationViewController: UITableViewController, EngineDelegate {
     
     let engine = StandardEngine.sharedInstance
     
@@ -34,59 +34,44 @@ class ConfigurationViewController: UITableViewController {
             engine.configurations = newValue
         }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        engine.delegate = self
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addUrlNoti), name: "urlUpdated", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addUrlNotification), name: "urlUpdated", object: nil)
         
-        
-        
-        let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
-        let fetcher = Fetcher()
-        fetcher.requestJSON(url) { (json, message) in
-            
-            if let json = json, array = json as? Array<Dictionary<String,AnyObject>> {
-                self.configurations = array.map({ (elementJSON) in
-                    return Configuration.fromJSON(elementJSON)
-                })
-
-                
-                let op = NSBlockOperation {
-                    self.tableView.reloadData()
-                }
-                NSOperationQueue.mainQueue().addOperation(op)
-                
-                //self.engine.configurations = self.configurations
-                
-                NSNotificationCenter.defaultCenter().postNotificationName("rowsClicked", object: nil, userInfo: json as? [NSObject : AnyObject])
-            }
-            
-        }
+        engine.loadConfigurations("https://dl.dropboxusercontent.com/u/7544475/S65g.json")
 
     }
     
-    func addUrlNoti(notification: NSNotification) -> String{
-        //print(72)
-        
-        let new =  String(notification.userInfo?.values)
-        print(new)
-        return new
-
-        //let url = notification.userInfo?.values
+    
+    
+    func engineDidUpdate(withGrid: GridProtocol) {}
+    
+    func configurationsDidUpdate(withConfigurations: [Configuration]) {
+        tableView.reloadData()
     }
     
-
+    
+    func addUrlNotification(notification: NSNotification){}
+    
+    
     @IBAction func addName(sender: AnyObject) {
-        var new = Configuration(title: "Add a new configuration...", contents: [])
-        new.contents.append((15,15))//needs correction
-        configurations.append(new)
-        let itemRow = configurations.count - 1
-        let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
-        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
+        
+        let new = Configuration(title: "Add a new configuration...", contents: [])
+        self.configurations.append(new)
         
     }
     
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return configurations.count
@@ -115,17 +100,9 @@ class ConfigurationViewController: UITableViewController {
                                                forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             configurations.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath],
-                                             withRowAnimation: .Automatic)
         }
     }
     
-    func configurationsDidUpdate(withConfigurations: [Configuration]) {
-        // do something with new configurations
-        
-        tableView.reloadData()
-    }
-
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let editingRow = (sender as! UITableViewCell).tag
@@ -138,6 +115,7 @@ class ConfigurationViewController: UITableViewController {
                 preconditionFailure("Another wtf?")
         }
         
+        editingVC.index = editingRow
         editingVC.name = editingString
         editingVC.points = editingPoints
         
@@ -154,10 +132,6 @@ class ConfigurationViewController: UITableViewController {
             self.tableView.reloadRowsAtIndexPaths([indexPath],
                                                   withRowAnimation: .Automatic)
         }
-
-        
-
-        
     }
     
     

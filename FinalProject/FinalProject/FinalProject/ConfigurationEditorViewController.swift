@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ConfigurationEditorViewController: UIViewController {
+class ConfigurationEditorViewController: UIViewController, EngineDelegate {
     
     @IBOutlet weak var ConfigurationGridView: GridView!
     @IBOutlet weak var nameTextField: UITextField!
     
     var engine = StandardEngine.sharedInstance
 
+    var index: Int?
     var name:String?
     var points: [(Int, Int)]?
     
@@ -56,16 +57,33 @@ class ConfigurationEditorViewController: UIViewController {
         super.viewDidLoad()
         nameTextField.text = name
         
-     
     }
     
+    func engineDidUpdate(withGrid: GridProtocol) {
+        
+    }
+    
+    func configurationsDidUpdate(withConfigurations: [Configuration]) {
+        ConfigurationGridView.setNeedsDisplay()
+    }
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        engine.configuration = engine.configurations[index!]
+        ConfigurationGridView.setNeedsDisplay()
+        engine.delegate = self
+        engine.setGridFromConfiguration()
+    }
 
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        engine.setGridFromConfiguration()
+    }
     
        
     

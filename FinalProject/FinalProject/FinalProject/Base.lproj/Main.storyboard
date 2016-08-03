@@ -399,7 +399,7 @@
                                         <rect key="frame" x="263" y="508" width="34" height="30"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
-                                            <action selector="savePressed:" destination="4kH-5W-CD0" eventType="touchDragInside" id="GbE-he-5Dr"/>
+                                            <action selector="savePressed:" destination="4kH-5W-CD0" eventType="touchUpInside" id="fmz-CD-MPM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JO5-OR-5Am">

@@ -19,7 +19,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBOutlet weak var gridview: GridView!
@@ -29,13 +28,11 @@ class SimulationViewController: UIViewController, EngineDelegate {
     func engineDidUpdate(withGrid: GridProtocol) {
         gridview.setNeedsDisplay()
     }
-    
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         StandardEngine.sharedInstance.configuration = nil
-        
         engine.delegate = self
         gridview.setNeedsDisplay()
     }
@@ -44,7 +41,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBAction func stepHit(sender: AnyObject) {
         engine.step()
     }
-
     
     @IBAction func resetHit(sender: AnyObject) {
         engine.grid = Grid(engine.rows, engine.cols) { _,_ in .Empty }
@@ -53,12 +49,11 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBOutlet weak var newConfigurationTitleTextField: UITextField!
     
-
     
     @IBAction func savePressed(sender: AnyObject) {
+        print(10)
         guard let title = newConfigurationTitleTextField.text where !title.isEmpty else { return }
         
-        // TODO: Fill up contents array with the (Int, Int) positions of alive cells in engine.grid
         var contents = [(Int, Int)]()
         
         for i in 0..<engine.rows {
@@ -74,6 +69,5 @@ class SimulationViewController: UIViewController, EngineDelegate {
         engine.configurations.append(configuration)
         
     }
-
 }
 

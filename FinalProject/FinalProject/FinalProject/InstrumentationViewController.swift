@@ -16,7 +16,7 @@ class InstrumentationViewController: UIViewController {
             UIApplication.sharedApplication().openURL(url)
         }
     }
-    
+
     
     var engine = StandardEngine.sharedInstance
     
@@ -77,10 +77,12 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var urlTextField: UITextField!
     
     @IBAction func reloadPressed(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("urlUpdated", object: nil, userInfo: ["new url" : urlTextField.text!])
+        
+        if let url = NSURL(string: urlTextField.text!) {
+            engine.loadConfigurations(url.absoluteString)
+        }
 
     }
-    
     
     
     override func viewDidLoad() {
@@ -90,7 +92,5 @@ class InstrumentationViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
             }
-
-
 }
 
