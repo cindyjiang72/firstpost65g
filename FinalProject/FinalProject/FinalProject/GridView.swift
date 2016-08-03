@@ -12,7 +12,6 @@ import UIKit
     
     var engine = StandardEngine.sharedInstance
     
-    
     func toggle(value:CellState) -> CellState
     {
         switch value
@@ -26,7 +25,6 @@ import UIKit
         case .Died:
             return .Alive
         }
-        
     }
     
     
@@ -49,7 +47,6 @@ import UIKit
         case .Died:
             return diedColor
         }
-        
     }
     
     
@@ -101,7 +98,6 @@ import UIKit
             }
             
             return currentGrid
-            
         }
     }
     

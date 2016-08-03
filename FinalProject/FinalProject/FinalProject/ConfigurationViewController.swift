@@ -46,9 +46,7 @@ class ConfigurationViewController: UITableViewController, EngineDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addUrlNotification), name: "urlUpdated", object: nil)
         
         engine.loadConfigurations("https://dl.dropboxusercontent.com/u/7544475/S65g.json")
-
     }
-    
     
     
     func engineDidUpdate(withGrid: GridProtocol) {}
@@ -57,15 +55,12 @@ class ConfigurationViewController: UITableViewController, EngineDelegate {
         tableView.reloadData()
     }
     
-    
     func addUrlNotification(notification: NSNotification){}
     
     
     @IBAction func addName(sender: AnyObject) {
-        
         let new = Configuration(title: "Add a new configuration...", contents: [])
         self.configurations.append(new)
-        
     }
     
     

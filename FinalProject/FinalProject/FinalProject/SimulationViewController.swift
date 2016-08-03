@@ -23,12 +23,14 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBOutlet weak var gridview: GridView!
     
+    //implementing singleton
     var engine = StandardEngine.sharedInstance
     
     func engineDidUpdate(withGrid: GridProtocol) {
         gridview.setNeedsDisplay()
     }
-
+    
+    //sets configuration to nil so the two scenes do not interact with each other
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -36,7 +38,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
         engine.delegate = self
         gridview.setNeedsDisplay()
     }
-    
     
     @IBAction func stepHit(sender: AnyObject) {
         engine.step()
@@ -48,7 +49,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
     
     @IBOutlet weak var newConfigurationTitleTextField: UITextField!
-    
     
     @IBAction func savePressed(sender: AnyObject) {
         print(10)
@@ -67,7 +67,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
         let configuration = Configuration(title: title, contents: contents)
         
         engine.configurations.append(configuration)
-        
     }
 }
 

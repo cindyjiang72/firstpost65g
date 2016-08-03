@@ -177,8 +177,6 @@ class StandardEngine: EngineProtocol {
     
     @objc func timerDidFire(timer:NSTimer) {
         step()
-        let date = NSDate()
-        print ("\(date)")
     }
     
     var refreshTimer: NSTimer?

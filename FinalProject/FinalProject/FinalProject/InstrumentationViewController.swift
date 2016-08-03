@@ -17,13 +17,12 @@ class InstrumentationViewController: UIViewController {
         }
     }
 
-    
+    //implementing singleton
     var engine = StandardEngine.sharedInstance
     
     @IBOutlet weak var refreshRate: UISlider!
 
     @IBAction func SliderChanged(sender: UISlider!) {
-        print(refreshRate)
         engine.refreshRate = Double(refreshRate.value)
         if !mySwitch.on {
             mySwitch.on = true

@@ -27,7 +27,6 @@ class ConfigurationEditorViewController: UIViewController, EngineDelegate {
         guard let newText = nameTextField.text, commit = commit
             else { return }
         
-        
         var pp = [(Int, Int)]()
         for i in 0..<ConfigurationGridView.rows {
             for j in 0..<ConfigurationGridView.cols {
@@ -38,18 +37,13 @@ class ConfigurationEditorViewController: UIViewController, EngineDelegate {
             }
         }
         points = pp
-
         
         guard let newcontents = points , commitpoints = commitpoints
             else { return }
-        
+
         commit(newText)
-        
         commitpoints(newcontents)
-        
         navigationController!.popViewControllerAnimated(true)
-        
-        
     }
     
     
